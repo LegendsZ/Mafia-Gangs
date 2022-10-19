@@ -18,8 +18,15 @@ Button::Button(int w, int h, int x, int y, const std::string& img_path, SDL_Rend
 	m_Text->setPos(x + w / 2 - m_Text->m_TextRect.w / 2, y + h / 2 - m_Text->m_TextRect.h / 2);
 }
 
+Button::Button(int w, int h, int x, int y, const std::string& img_path, void(*handler)(SDL_Event&)):
+	m_Handler(handler)
+{
+	m_Rect = new Rect(w, h, x, y, img_path);
+}
+
 Button::Button(Rect* rect, Text* text, void(*handler)(SDL_Event&)) : m_Rect(rect), m_Text(text), m_Handler(handler)
 {
+	text->setPos(rect->getPos()[0], rect->getPos()[1]);
 }
 
 bool Button::pollEvents()
@@ -53,6 +60,8 @@ int* Button::getPos()
 bool Button::draw()
 {
 	m_Rect->draw();
-	m_Text->display();
+	if (m_Text != nullptr) {
+		m_Text->display();
+	}
 	return true;
 }

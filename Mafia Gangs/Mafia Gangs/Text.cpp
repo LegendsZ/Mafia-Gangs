@@ -3,6 +3,7 @@
 Text::Text(SDL_Renderer* renderer, const std::string& font_path, int font_size, const std::string& message, const SDL_Color& color) :
 	m_FontPath(font_path), m_FontSize(font_size), m_Color(color)
 {
+	m_Renderer = renderer;
 	m_Texture = loadFont(renderer, font_path, font_size, message, color);
 	SDL_QueryTexture(m_Texture, nullptr, nullptr, &m_TextRect.w, &m_TextRect.h);
 }
@@ -15,6 +16,7 @@ Text::~Text()
 
 void Text::display() const
 {
+
 	m_TextRect.x = m_Pos[0];
 	m_TextRect.y = m_Pos[1];
 	SDL_RenderCopy(m_Renderer, m_Texture, nullptr, &m_TextRect);
