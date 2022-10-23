@@ -1,7 +1,7 @@
 #include "SDL.h"
 #undef main
 
-
+#include "Settings.h"
 #include "Menu.h"
 #pragma once
 
@@ -22,6 +22,7 @@ int main() {
 	mainWindow->setWindowIcon("res/icon.jpg");
 	Menu::Initialize(true, screenSizeX, screenSizeY);
 	Menu::btnAnimation = true;
+	Loading::bkgdAnimation = true;
 	Loading::Initialize(false, screenSizeX, screenSizeY);
 
 	
@@ -32,7 +33,7 @@ int main() {
 
 
 		SDL_ShowWindow(mainWindow->m_Window);
-		SDL_PollEvent(event);
+		//SDL_PollEvent(event);
 
 		if (Menu::enabled) {
 			Menu::draw();
@@ -40,6 +41,7 @@ int main() {
 		}
 		else if (Loading::enabled) {
 			Loading::draw();
+			Loading::pollEvents();
 		}
 
 		mainWindow->clear();

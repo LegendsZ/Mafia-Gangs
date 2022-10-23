@@ -68,7 +68,7 @@ bool Menu::pollEvents()
 void Menu::btnPlayClickEvent(SDL_Event& event) {
 	if (enabled) {
 		if (event.type == SDL_MOUSEBUTTONUP) {
-			if (Menu::enabled && screenSizeX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
+			if (Menu::enabled && mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
 				Loading::enabled = true;
 				Menu::enabled = false;
 			}
