@@ -3,7 +3,7 @@
 
 
 #include "Menu.h"
-
+#pragma once
 
 #define ADJUSTMENT_FACTOR 25
 
@@ -19,8 +19,10 @@ int main() {
 	SDL_Event* event = new SDL_Event;
 
 	Window* mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
+	mainWindow->setWindowIcon("res/icon.jpg");
 	Menu::Initialize(true, screenSizeX, screenSizeY);
-	
+	Menu::btnAnimation = true;
+	Loading::Initialize(false, screenSizeX, screenSizeY);
 
 	
 
@@ -33,8 +35,11 @@ int main() {
 		SDL_PollEvent(event);
 
 		if (Menu::enabled) {
-			Menu::pollEvents();
 			Menu::draw();
+			Menu::pollEvents();
+		}
+		else if (Loading::enabled) {
+			Loading::draw();
 		}
 
 		mainWindow->clear();

@@ -21,6 +21,18 @@ Window::~Window() {
 	SDL_Quit();
 }
 
+bool Window::setWindowIcon(std::string path)
+{
+	SDL_Surface* surface = IMG_Load(path.c_str());
+	if (!surface) {
+		std::cerr << "Failed to create surface!\n";
+		return false;
+	}
+	SDL_SetWindowIcon(m_Window, surface);
+	SDL_FreeSurface(surface);
+	return true;
+}
+
 void Window::pollEvents(const SDL_Event& event)
 {
 	switch (event.type) {

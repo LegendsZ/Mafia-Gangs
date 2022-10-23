@@ -48,7 +48,9 @@ bool Button::pollEvents(SDL_Event event)
 bool Button::setPos(int x, int y)
 {
 	m_Rect->setPos(x, y);
-	m_Text->setPos(x + m_Rect->m_Width / 2 - m_Text->m_TextRect.w / 2, y + m_Rect->m_Height / 2 - m_Text->m_TextRect.h / 2);
+	if (m_Text != nullptr) {
+		m_Text->setPos(x + m_Rect->m_Width / 2 - m_Text->m_TextRect.w / 2, y + m_Rect->m_Height / 2 - m_Text->m_TextRect.h / 2);
+	}
 	return true;
 }
 

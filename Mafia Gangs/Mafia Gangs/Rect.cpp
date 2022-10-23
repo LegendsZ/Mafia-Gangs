@@ -90,7 +90,7 @@ bool Rect::changeImage(std::string& img_path)
 	SDL_Surface* surface = IMG_Load(img_path.c_str());
 	if (!surface) {
 		std::cerr << "Failed to create surface!\n";
-		return false;;
+		return false;
 	}
 	SDL_DestroyTexture(m_Texture);
 	m_Texture = SDL_CreateTextureFromSurface(Window::renderer, surface);

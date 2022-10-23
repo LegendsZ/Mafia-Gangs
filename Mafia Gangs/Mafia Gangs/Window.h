@@ -11,7 +11,7 @@ class Window {
 public:
 	Window(const std::string& title, int width, int height);
 	~Window();
-
+	bool setWindowIcon(std::string path);
 	void pollEvents(const SDL_Event& event);
 	void clear() const;
 
