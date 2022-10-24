@@ -1,9 +1,11 @@
 #include "SDL.h"
 #undef main
 
+#pragma once
 #include "Settings.h"
 #include "Menu.h"
-#pragma once
+#include "Loading.h"
+#include "Settings.h"
 
 #define ADJUSTMENT_FACTOR 25
 
@@ -21,10 +23,11 @@ int main() {
 	Window* mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
 	mainWindow->setWindowIcon("res/icon.jpg");
 	Menu::Initialize(true, screenSizeX, screenSizeY);
-	Menu::btnAnimation = true;
-	Loading::bkgdAnimation = true;
+	Menu::animations = true;
+	Loading::animations = true;
 	Loading::Initialize(false, screenSizeX, screenSizeY);
-
+	Settings::animations = true;
+	Settings::Initialize(false, screenSizeX, screenSizeY);
 	
 
 	lastFrame = SDL_GetTicks();
@@ -35,13 +38,16 @@ int main() {
 		SDL_ShowWindow(mainWindow->m_Window);
 		//SDL_PollEvent(event);
 
-		if (Menu::enabled) {
+		if (visibilities::menuVisibility) {
 			Menu::draw();
 			Menu::pollEvents();
 		}
-		else if (Loading::enabled) {
+		else if (visibilities::loadingVisibility) {
 			Loading::draw();
 			Loading::pollEvents();
+		}else if (visibilities::settingsVisibility) {
+			Settings::draw();
+			Settings::pollEvents();
 		}
 
 		mainWindow->clear();
@@ -54,7 +60,6 @@ int main() {
 		}
 		if ((SDL_GetTicks() - lastFrame) / 1000.0 >= 1) {
 			system("cls");
-			std::cout << "Initializing...OK!\n";
 			std::cout << "FPS: " << --framesCount;
 			framesCount = 0;
 			lastFrame = SDL_GetTicks();

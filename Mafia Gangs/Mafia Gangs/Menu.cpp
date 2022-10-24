@@ -1,17 +1,20 @@
 #include "Menu.h"
+#include "Settings.h"
 
-bool Menu::enabled;
+
+//bool Menu::enabled;
 unsigned int Menu::screenSizeX, Menu::screenSizeY;
 unsigned int Menu::mouseX, Menu::mouseY;
 Rect* Menu::bkgdMenu;
 Text* Menu::title;
 Button* Menu::btnPlay;
+Button* Menu::btnSettings;
 
-bool Menu::btnAnimation = false;
+bool Menu::animations = false;
 int Menu::btnAnimationIncrementor = -1;
 
 bool Menu::Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY) {
-	Menu::enabled = enabled;
+	visibilities::menuVisibility= enabled;
 	Menu::screenSizeX = screenSizeX;
 	Menu::screenSizeY = screenSizeY;
 	Menu::bkgdMenu = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.jpg");
@@ -23,12 +26,17 @@ bool Menu::Initialize(bool enabled, unsigned int screenSizeX, unsigned int scree
 		500,
 		125,
 		"res/btnPlay.png", Menu::btnPlayClickEvent);
+	Menu::btnSettings = new Button(
+		175, 75,
+		500,
+		225,
+		"res/btnPlay.png", Menu::btnSettingsClickEvent);
 	return true;
 }
 
 bool Menu::draw() {
-	if (enabled) {
-		if (btnAnimation) {
+	if (visibilities::menuVisibility) {
+		if (animations) {
 			if (btnPlay->getPos()[0] <= 450) {
 				Menu::btnAnimationIncrementor *= -1;
 			}
@@ -37,11 +45,14 @@ bool Menu::draw() {
 			}
 			btnPlay->setPos(btnPlay->getPos()[0] - btnAnimationIncrementor, btnPlay->getPos()[1]);
 			btnPlay->m_Rect->m_Width += (2 * btnAnimationIncrementor);
+			btnSettings->setPos(btnSettings->getPos()[0] - btnAnimationIncrementor, btnSettings->getPos()[1]);
+			btnSettings->m_Rect->m_Width += (2 * btnAnimationIncrementor);
 		}
 
 
 		Menu::bkgdMenu->draw();
 		Menu::btnPlay->draw();
+		Menu::btnSettings->draw();
 		Menu::title->display();
 		return true;
 	}
@@ -50,7 +61,7 @@ bool Menu::draw() {
 
 bool Menu::pollEvents()
 {
-	if (!enabled) {
+	if (!visibilities::menuVisibility) {
 		return false;
 	}
 	SDL_Event event;
@@ -62,15 +73,27 @@ bool Menu::pollEvents()
 	}
 
 	btnPlay->pollEvents(event);
+	btnSettings->pollEvents(event);
 	return true;
 }
 
 void Menu::btnPlayClickEvent(SDL_Event& event) {
-	if (enabled) {
+	if (visibilities::menuVisibility) {
 		if (event.type == SDL_MOUSEBUTTONUP) {
-			if (Menu::enabled && mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
-				Loading::enabled = true;
-				Menu::enabled = false;
+			if (mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
+				visibilities::loadingVisibility = true;
+				visibilities::menuVisibility = false;
+			}
+		}
+	}
+}
+
+void Menu::btnSettingsClickEvent(SDL_Event& event) {
+	if (visibilities::menuVisibility) {
+		if (event.type == SDL_MOUSEBUTTONUP) {
+			if (mouseX >= btnSettings->getPos()[0] && mouseX <= btnSettings->getPos()[0] + btnSettings->m_Rect->m_Width && mouseY >= btnSettings->getPos()[1] && mouseY <= btnSettings->getPos()[1] + btnSettings->m_Rect->m_Height) {
+				visibilities::settingsVisibility = true;
+				visibilities::menuVisibility = false;
 			}
 		}
 	}

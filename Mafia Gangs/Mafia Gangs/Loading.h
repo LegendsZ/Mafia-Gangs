@@ -2,16 +2,16 @@
 #include <iostream>
 #include "Window.h"
 #include "Button.h"
-
+#include "ScreenVisibility.h"
 
 class Loading {
 public:
-	static bool enabled;
+	//static bool enabled;
 	static unsigned int screenSizeX, screenSizeY;
 	static unsigned int mouseX, mouseY;
 
 	static Rect* bkgdLoadingOne;
-	static bool bkgdAnimation;
+	static bool animations;
 	static Rect* bkgdLoadingTwo;
 
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);

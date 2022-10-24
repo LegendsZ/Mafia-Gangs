@@ -1,20 +1,20 @@
 #include "Loading.h"
 
 
-bool Loading::enabled;
+//bool Loading::enabled;
 unsigned int Loading::screenSizeX, Loading::screenSizeY;
 unsigned int Loading::mouseX, Loading::mouseY;
 Rect* Loading::bkgdLoadingOne;
 
-bool Loading::bkgdAnimation = false;
+bool Loading::animations = false;
 Rect* Loading::bkgdLoadingTwo;
 
 bool Loading::Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY) {
-	Loading::enabled = enabled;
+	visibilities::loadingVisibility = enabled;
 	Loading::screenSizeX = screenSizeX;
 	Loading::screenSizeY = screenSizeY;
 	Loading::bkgdLoadingOne = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdLoading.jpg");
-	if (bkgdAnimation) {
+	if (animations) {
 		Loading::bkgdLoadingTwo = new Rect(screenSizeX, screenSizeY, 0, -((int)screenSizeY), "res/bkgdLoading.jpg");
 	}
 	return true;
@@ -22,25 +22,25 @@ bool Loading::Initialize(bool enabled, unsigned int screenSizeX, unsigned int sc
 
 bool Loading::StartAnimation()
 {
-	if (Loading::bkgdAnimation == true) {
+	if (Loading::animations == true) {
 		return false;
 	}
 	Loading::bkgdLoadingTwo = new Rect(screenSizeX, screenSizeY, 0, -((int)screenSizeY), "res/bkgdLoading.jpg");
-	Loading::bkgdAnimation = true;
+	Loading::animations = true;
 	return true;
 }
 
 bool Loading::StopAnimation()
 {
 	delete Loading::bkgdLoadingTwo;
-	Loading::bkgdAnimation = false;
+	Loading::animations = false;
 	return true;
 }
 
 bool Loading::draw() {
-	if (Loading::enabled) {
+	if (visibilities::loadingVisibility) {
 		Loading::bkgdLoadingOne->draw();
-		if (bkgdLoadingTwo != nullptr && bkgdAnimation) {
+		if (bkgdLoadingTwo != nullptr && animations) {
 			//animation logic
 			Loading::bkgdLoadingOne->setDisplacement(0, 1);
 			Loading::bkgdLoadingTwo->setDisplacement(0, 1);
@@ -59,7 +59,7 @@ bool Loading::draw() {
 
 bool Loading::pollEvents()
 {
-	if (!enabled) {
+	if (!visibilities::loadingVisibility) {
 		return false;
 	}
 	SDL_Event event;

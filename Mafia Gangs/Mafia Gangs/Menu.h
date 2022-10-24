@@ -2,22 +2,23 @@
 #include <iostream>
 #include "Window.h"
 #include "Button.h"
-#include "Loading.h"
 
 class Menu {
 public:
-	static bool enabled;
+	//static bool enabled;
 	static unsigned int screenSizeX,screenSizeY;
 	static unsigned int mouseX, mouseY;
 	static Rect* bkgdMenu;
 	static Text* title;
 
 	static Button* btnPlay;
-	static bool btnAnimation;
+	static Button* btnSettings;
+	static bool animations;
 	static int btnAnimationIncrementor;
 
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);
 	static void btnPlayClickEvent(SDL_Event& event);
+	static void btnSettingsClickEvent(SDL_Event& event);
 
 	static bool pollEvents();
 	static bool draw();

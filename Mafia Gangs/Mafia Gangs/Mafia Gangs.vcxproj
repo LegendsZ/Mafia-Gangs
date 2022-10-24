@@ -149,6 +149,7 @@
     <ClCompile Include="Loading.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="screenVisibility.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Text.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Loading.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="ScreenVisibility.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Window.h" />
