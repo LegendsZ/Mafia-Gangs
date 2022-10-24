@@ -6,7 +6,6 @@ unsigned int Loading::screenSizeX, Loading::screenSizeY;
 unsigned int Loading::mouseX, Loading::mouseY;
 Rect* Loading::bkgdLoadingOne;
 
-bool Loading::animations = false;
 Rect* Loading::bkgdLoadingTwo;
 
 bool Loading::Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY) {
@@ -14,33 +13,16 @@ bool Loading::Initialize(bool enabled, unsigned int screenSizeX, unsigned int sc
 	Loading::screenSizeX = screenSizeX;
 	Loading::screenSizeY = screenSizeY;
 	Loading::bkgdLoadingOne = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdLoading.jpg");
-	if (animations) {
+	if (visibilities::animations) {
 		Loading::bkgdLoadingTwo = new Rect(screenSizeX, screenSizeY, 0, -((int)screenSizeY), "res/bkgdLoading.jpg");
 	}
-	return true;
-}
-
-bool Loading::StartAnimation()
-{
-	if (Loading::animations == true) {
-		return false;
-	}
-	Loading::bkgdLoadingTwo = new Rect(screenSizeX, screenSizeY, 0, -((int)screenSizeY), "res/bkgdLoading.jpg");
-	Loading::animations = true;
-	return true;
-}
-
-bool Loading::StopAnimation()
-{
-	delete Loading::bkgdLoadingTwo;
-	Loading::animations = false;
 	return true;
 }
 
 bool Loading::draw() {
 	if (visibilities::loadingVisibility) {
 		Loading::bkgdLoadingOne->draw();
-		if (bkgdLoadingTwo != nullptr && animations) {
+		if (bkgdLoadingTwo != nullptr && visibilities::animations) {
 			//animation logic
 			Loading::bkgdLoadingOne->setDisplacement(0, 1);
 			Loading::bkgdLoadingTwo->setDisplacement(0, 1);

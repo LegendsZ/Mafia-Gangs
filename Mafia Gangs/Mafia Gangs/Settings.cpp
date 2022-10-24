@@ -7,8 +7,7 @@ unsigned int Settings::mouseX, Settings::mouseY;
 Rect* Settings::bkgdSettings;
 Text* Settings::title;
 Button* Settings::btnBack;
-
-bool Settings::animations = false;
+Button* Settings::btnAnimations;
 int Settings::btnAnimationIncrementor = -1;
 
 bool Settings::Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY)
@@ -25,6 +24,11 @@ bool Settings::Initialize(bool enabled, unsigned int screenSizeX, unsigned int s
 		500,
 		350,
 		"res/btnPlay.png", Settings::btnBackClickEvent);
+	Settings::btnAnimations = new Button(
+		175, 75,
+		500,
+		175,
+		"res/btnPlay.png", Settings::btnAnimationsClickEvent);
 	return true;
 }
 
@@ -35,6 +39,20 @@ void Settings::btnBackClickEvent(SDL_Event& event)
 			if (mouseX >= btnBack->getPos()[0] && mouseX <= btnBack->getPos()[0] + btnBack->m_Rect->m_Width && mouseY >= btnBack->getPos()[1] && mouseY <= btnBack->getPos()[1] + btnBack->m_Rect->m_Height) {
 				visibilities::menuVisibility = true;
 				visibilities::settingsVisibility = false;
+			}
+		}
+	}
+}
+
+void Settings::btnAnimationsClickEvent(SDL_Event& event)
+{
+	if (visibilities::settingsVisibility) {
+		if (event.type == SDL_MOUSEBUTTONUP) {
+			if (mouseX >= btnAnimations->getPos()[0] && mouseX <= btnAnimations->getPos()[0] + btnAnimations->m_Rect->m_Width && mouseY >= btnAnimations->getPos()[1] && mouseY <= btnAnimations->getPos()[1] + btnAnimations->m_Rect->m_Height) {
+				visibilities::animations = !visibilities::animations;
+				if (!visibilities::animations) {
+					//need to set all animated objects back to normal?
+				}
 			}
 		}
 	}
@@ -54,13 +72,14 @@ bool Settings::pollEvents()
 	}
 
 	btnBack->pollEvents(event);
+	btnAnimations->pollEvents(event);
 	return true;
 }
 
 bool Settings::draw()
 {
 	if (visibilities::settingsVisibility) {
-		if (animations) {
+		if (visibilities::animations) {
 			if (btnBack->getPos()[0] <= 450) {
 				Settings::btnAnimationIncrementor *= -1;
 			}
@@ -69,11 +88,14 @@ bool Settings::draw()
 			}
 			btnBack->setPos(btnBack->getPos()[0] - btnAnimationIncrementor, btnBack->getPos()[1]);
 			btnBack->m_Rect->m_Width += (2 * btnAnimationIncrementor);
+			btnAnimations->setPos(btnAnimations->getPos()[0] - btnAnimationIncrementor, btnAnimations->getPos()[1]);
+			btnAnimations->m_Rect->m_Width += (2 * btnAnimationIncrementor);
 		}
 
 
 		Settings::bkgdSettings->draw();
 		Settings::btnBack->draw();
+		btnAnimations->draw();
 		Settings::title->display();
 		return true;
 	}

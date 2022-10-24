@@ -13,11 +13,12 @@ public:
 	static Text* title;
 
 	static Button* btnBack;
-	static bool animations;
+	static Button* btnAnimations;
 	static int btnAnimationIncrementor;
 
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);
 	static void btnBackClickEvent(SDL_Event& event);
+	static void btnAnimationsClickEvent(SDL_Event& event);
 
 	static bool pollEvents();
 	static bool draw();

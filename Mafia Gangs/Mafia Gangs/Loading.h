@@ -11,12 +11,9 @@ public:
 	static unsigned int mouseX, mouseY;
 
 	static Rect* bkgdLoadingOne;
-	static bool animations;
 	static Rect* bkgdLoadingTwo;
 
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);
-	static bool StartAnimation();
-	static bool StopAnimation();
 	static bool draw();
 	static bool pollEvents();
 private:

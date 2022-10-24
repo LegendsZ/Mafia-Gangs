@@ -1,2 +1,15 @@
-﻿  Source.cpp
+﻿  Game.cpp
+  Settings.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(39,15): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(39,49): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(39,110): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(39,144): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(51,15): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(51,55): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(51,128): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(51,168): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(70,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(71,27): warning C4018: '<=': signed/unsigned mismatch
+  Source.cpp
+  Generating Code...
   Mafia Gangs.vcxproj -> C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\x64\Debug\Mafia Gangs.exe

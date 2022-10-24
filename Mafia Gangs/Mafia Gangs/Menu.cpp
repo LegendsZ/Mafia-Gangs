@@ -10,7 +10,6 @@ Text* Menu::title;
 Button* Menu::btnPlay;
 Button* Menu::btnSettings;
 
-bool Menu::animations = false;
 int Menu::btnAnimationIncrementor = -1;
 
 bool Menu::Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY) {
@@ -36,7 +35,7 @@ bool Menu::Initialize(bool enabled, unsigned int screenSizeX, unsigned int scree
 
 bool Menu::draw() {
 	if (visibilities::menuVisibility) {
-		if (animations) {
+		if (visibilities::animations) {
 			if (btnPlay->getPos()[0] <= 450) {
 				Menu::btnAnimationIncrementor *= -1;
 			}

@@ -13,7 +13,6 @@ public:
 
 	static Button* btnPlay;
 	static Button* btnSettings;
-	static bool animations;
 	static int btnAnimationIncrementor;
 
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);

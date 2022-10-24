@@ -6,6 +6,7 @@
 #include "Menu.h"
 #include "Loading.h"
 #include "Settings.h"
+#include "Game.h"
 
 #define ADJUSTMENT_FACTOR 25
 
@@ -23,20 +24,14 @@ int main() {
 	Window* mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
 	mainWindow->setWindowIcon("res/icon.jpg");
 	Menu::Initialize(true, screenSizeX, screenSizeY);
-	Menu::animations = true;
-	Loading::animations = true;
 	Loading::Initialize(false, screenSizeX, screenSizeY);
-	Settings::animations = true;
 	Settings::Initialize(false, screenSizeX, screenSizeY);
 	
 
 	lastFrame = SDL_GetTicks();
 	while (!mainWindow->isClosed()) {
 		iStart = SDL_GetTicks();
-
-
 		SDL_ShowWindow(mainWindow->m_Window);
-		//SDL_PollEvent(event);
 
 		if (visibilities::menuVisibility) {
 			Menu::draw();
@@ -49,7 +44,6 @@ int main() {
 			Settings::draw();
 			Settings::pollEvents();
 		}
-
 		mainWindow->clear();
 
 
