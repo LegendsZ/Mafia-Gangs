@@ -1,5 +1,4 @@
 #include "Menu.h"
-#include "Settings.h"
 
 
 //bool Menu::enabled;
@@ -76,24 +75,27 @@ bool Menu::pollEvents()
 	return true;
 }
 
+void Menu::gameLoader() {
+	Game::Initialize(false, screenSizeX,screenSizeY);
+	visibilities::gameVisibility = true;
+	visibilities::loadingVisibility= false;
+}
 void Menu::btnPlayClickEvent(SDL_Event& event) {
-	if (visibilities::menuVisibility) {
-		if (event.type == SDL_MOUSEBUTTONUP) {
-			if (mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
-				visibilities::loadingVisibility = true;
-				visibilities::menuVisibility = false;
-			}
+	if (event.type == SDL_MOUSEBUTTONUP) {
+		if (mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
+			visibilities::loadingVisibility = true;
+			visibilities::menuVisibility = false;
+			Loading::loader = Menu::gameLoader;
+			SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
 		}
 	}
 }
 
 void Menu::btnSettingsClickEvent(SDL_Event& event) {
-	if (visibilities::menuVisibility) {
-		if (event.type == SDL_MOUSEBUTTONUP) {
-			if (mouseX >= btnSettings->getPos()[0] && mouseX <= btnSettings->getPos()[0] + btnSettings->m_Rect->m_Width && mouseY >= btnSettings->getPos()[1] && mouseY <= btnSettings->getPos()[1] + btnSettings->m_Rect->m_Height) {
-				visibilities::settingsVisibility = true;
-				visibilities::menuVisibility = false;
-			}
+	if (event.type == SDL_MOUSEBUTTONUP) {
+		if (mouseX >= btnSettings->getPos()[0] && mouseX <= btnSettings->getPos()[0] + btnSettings->m_Rect->m_Width && mouseY >= btnSettings->getPos()[1] && mouseY <= btnSettings->getPos()[1] + btnSettings->m_Rect->m_Height) {
+			visibilities::settingsVisibility = true;
+			visibilities::menuVisibility = false;
 		}
 	}
 }

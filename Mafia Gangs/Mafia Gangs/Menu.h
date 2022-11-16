@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
-#include "Window.h"
-#include "Button.h"
+#include "Settings.h"
+#include "Loading.h"
+#include "Game.h"
 
 class Menu {
 public:
@@ -18,6 +19,7 @@ public:
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);
 	static void btnPlayClickEvent(SDL_Event& event);
 	static void btnSettingsClickEvent(SDL_Event& event);
+	static void gameLoader();
 
 	static bool pollEvents();
 	static bool draw();

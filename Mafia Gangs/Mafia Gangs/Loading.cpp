@@ -4,8 +4,9 @@
 //bool Loading::enabled;
 unsigned int Loading::screenSizeX, Loading::screenSizeY;
 unsigned int Loading::mouseX, Loading::mouseY;
-Rect* Loading::bkgdLoadingOne;
+void(*Loading::loader);
 
+Rect* Loading::bkgdLoadingOne;
 Rect* Loading::bkgdLoadingTwo;
 
 bool Loading::Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY) {
@@ -38,6 +39,7 @@ bool Loading::draw() {
 	}
 	return false;
 }
+
 
 bool Loading::pollEvents()
 {

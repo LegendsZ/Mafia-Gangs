@@ -2,11 +2,7 @@
 #undef main
 
 #pragma once
-#include "Settings.h"
 #include "Menu.h"
-#include "Loading.h"
-#include "Settings.h"
-#include "Game.h"
 
 #define ADJUSTMENT_FACTOR 25
 
@@ -24,7 +20,7 @@ int main() {
 	Window* mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
 	mainWindow->setWindowIcon("res/icon.jpg");
 	Menu::Initialize(true, screenSizeX, screenSizeY);
-	Loading::Initialize(false, screenSizeX, screenSizeY);
+	Loading::Initialize(false, screenSizeX, screenSizeY); //add initailized variable to each class so that it only initializes if it has to
 	Settings::Initialize(false, screenSizeX, screenSizeY);
 	
 
@@ -32,15 +28,18 @@ int main() {
 	while (!mainWindow->isClosed()) {
 		iStart = SDL_GetTicks();
 		SDL_ShowWindow(mainWindow->m_Window);
-
-		if (visibilities::menuVisibility) {
+		if (visibilities::gameVisibility) {
+			Game::draw();
+			Game::pollEvents();
+		}
+		else if (visibilities::menuVisibility) {
 			Menu::draw();
 			Menu::pollEvents();
 		}
 		else if (visibilities::loadingVisibility) {
 			Loading::draw();
-			Loading::pollEvents();
-		}else if (visibilities::settingsVisibility) {
+		}
+		else if (visibilities::settingsVisibility) {
 			Settings::draw();
 			Settings::pollEvents();
 		}

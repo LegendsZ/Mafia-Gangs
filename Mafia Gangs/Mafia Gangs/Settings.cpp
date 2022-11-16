@@ -34,25 +34,21 @@ bool Settings::Initialize(bool enabled, unsigned int screenSizeX, unsigned int s
 
 void Settings::btnBackClickEvent(SDL_Event& event)
 {
-	if (visibilities::settingsVisibility) {
-		if (event.type == SDL_MOUSEBUTTONUP) {
-			if (mouseX >= btnBack->getPos()[0] && mouseX <= btnBack->getPos()[0] + btnBack->m_Rect->m_Width && mouseY >= btnBack->getPos()[1] && mouseY <= btnBack->getPos()[1] + btnBack->m_Rect->m_Height) {
-				visibilities::menuVisibility = true;
-				visibilities::settingsVisibility = false;
-			}
+	if (event.type == SDL_MOUSEBUTTONUP) {
+		if (mouseX >= btnBack->getPos()[0] && mouseX <= btnBack->getPos()[0] + btnBack->m_Rect->m_Width && mouseY >= btnBack->getPos()[1] && mouseY <= btnBack->getPos()[1] + btnBack->m_Rect->m_Height) {
+			visibilities::menuVisibility = true;
+			visibilities::settingsVisibility = false;
 		}
 	}
 }
 
 void Settings::btnAnimationsClickEvent(SDL_Event& event)
 {
-	if (visibilities::settingsVisibility) {
-		if (event.type == SDL_MOUSEBUTTONUP) {
-			if (mouseX >= btnAnimations->getPos()[0] && mouseX <= btnAnimations->getPos()[0] + btnAnimations->m_Rect->m_Width && mouseY >= btnAnimations->getPos()[1] && mouseY <= btnAnimations->getPos()[1] + btnAnimations->m_Rect->m_Height) {
-				visibilities::animations = !visibilities::animations;
-				if (!visibilities::animations) {
-					//need to set all animated objects back to normal?
-				}
+	if (event.type == SDL_MOUSEBUTTONUP) {
+		if (mouseX >= btnAnimations->getPos()[0] && mouseX <= btnAnimations->getPos()[0] + btnAnimations->m_Rect->m_Width && mouseY >= btnAnimations->getPos()[1] && mouseY <= btnAnimations->getPos()[1] + btnAnimations->m_Rect->m_Height) {
+			visibilities::animations = !visibilities::animations;
+			if (!visibilities::animations) {
+				//need to set all animated objects back to normal?
 			}
 		}
 	}

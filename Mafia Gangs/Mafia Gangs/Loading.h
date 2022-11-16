@@ -12,6 +12,7 @@ public:
 
 	static Rect* bkgdLoadingOne;
 	static Rect* bkgdLoadingTwo;
+	static void(*loader);
 
 	static bool Initialize(bool enabled, unsigned int screenSizeX, unsigned int screenSizeY);
 	static bool draw();
