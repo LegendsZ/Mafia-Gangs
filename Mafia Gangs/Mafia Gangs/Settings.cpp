@@ -36,6 +36,7 @@ void Settings::btnBackClickEvent(SDL_Event& event)
 {
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		if (mouseX >= btnBack->getPos()[0] && mouseX <= btnBack->getPos()[0] + btnBack->m_Rect->m_Width && mouseY >= btnBack->getPos()[1] && mouseY <= btnBack->getPos()[1] + btnBack->m_Rect->m_Height) {
+			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs | Menu");
 			visibilities::menuVisibility = true;
 			visibilities::settingsVisibility = false;
 		}
@@ -66,34 +67,33 @@ bool Settings::pollEvents()
 		mouseX = event.motion.x <= screenSizeX ? event.motion.x : mouseX;
 		mouseY = event.motion.y <= screenSizeY ? event.motion.y : mouseY;
 	}
-
-	btnBack->pollEvents(event);
-	btnAnimations->pollEvents(event);
+	else {
+		btnBack->pollEvents(event);
+		btnAnimations->pollEvents(event);
+	}
+	
 	return true;
 }
 
 bool Settings::draw()
 {
-	if (visibilities::settingsVisibility) {
-		if (visibilities::animations) {
-			if (btnBack->getPos()[0] <= 450) {
-				Settings::btnAnimationIncrementor *= -1;
-			}
-			else if (btnBack->getPos()[0] >= 500) {
-				Settings::btnAnimationIncrementor *= -1;
-			}
-			btnBack->setPos(btnBack->getPos()[0] - btnAnimationIncrementor, btnBack->getPos()[1]);
-			btnBack->m_Rect->m_Width += (2 * btnAnimationIncrementor);
-			btnAnimations->setPos(btnAnimations->getPos()[0] - btnAnimationIncrementor, btnAnimations->getPos()[1]);
-			btnAnimations->m_Rect->m_Width += (2 * btnAnimationIncrementor);
+	if (visibilities::animations) {
+		if (btnBack->getPos()[0] <= 450) {
+			Settings::btnAnimationIncrementor *= -1;
 		}
-
-
-		Settings::bkgdSettings->draw();
-		Settings::btnBack->draw();
-		btnAnimations->draw();
-		Settings::title->display();
-		return true;
+		else if (btnBack->getPos()[0] >= 500) {
+			Settings::btnAnimationIncrementor *= -1;
+		}
+		btnBack->setPos(btnBack->getPos()[0] - btnAnimationIncrementor, btnBack->getPos()[1]);
+		btnBack->m_Rect->m_Width += (2 * btnAnimationIncrementor);
+		btnAnimations->setPos(btnAnimations->getPos()[0] - btnAnimationIncrementor, btnAnimations->getPos()[1]);
+		btnAnimations->m_Rect->m_Width += (2 * btnAnimationIncrementor);
 	}
-	return false;
+
+
+	Settings::bkgdSettings->draw();
+	Settings::btnBack->draw();
+	btnAnimations->draw();
+	Settings::title->display();
+	return true;
 }

@@ -18,6 +18,7 @@ int main() {
 	SDL_Event* event = new SDL_Event;
 
 	Window* mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
+	visibilities::windowPTRVOID = mainWindow;
 	mainWindow->setWindowIcon("res/icon.jpg");
 	Menu::Initialize(true, screenSizeX, screenSizeY);
 	Loading::Initialize(false, screenSizeX, screenSizeY); //add initailized variable to each class so that it only initializes if it has to

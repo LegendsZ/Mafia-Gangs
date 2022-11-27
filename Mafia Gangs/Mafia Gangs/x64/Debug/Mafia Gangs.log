@@ -1,4 +1,2 @@
-﻿  Game.cpp
-C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(58,27): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(59,27): warning C4018: '<=': signed/unsigned mismatch
+﻿  Source.cpp
   Mafia Gangs.vcxproj -> C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\x64\Debug\Mafia Gangs.exe

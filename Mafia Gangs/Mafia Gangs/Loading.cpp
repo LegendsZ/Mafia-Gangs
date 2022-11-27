@@ -21,23 +21,21 @@ bool Loading::Initialize(bool enabled, unsigned int screenSizeX, unsigned int sc
 }
 
 bool Loading::draw() {
-	if (visibilities::loadingVisibility) {
-		Loading::bkgdLoadingOne->draw();
-		if (bkgdLoadingTwo != nullptr && visibilities::animations) {
-			//animation logic
-			Loading::bkgdLoadingOne->setDisplacement(0, 1);
-			Loading::bkgdLoadingTwo->setDisplacement(0, 1);
-			if (bkgdLoadingOne->getPos()[1] == 0) {
-				Loading::bkgdLoadingTwo->setPos(0, -Loading::bkgdLoadingTwo->m_Height);
-			}else if (bkgdLoadingTwo->getPos()[1] == 0) {
-				Loading::bkgdLoadingOne->setPos(0, -Loading::bkgdLoadingOne->m_Height);
-			}
-
-			Loading::bkgdLoadingTwo->draw();
+	Loading::bkgdLoadingOne->draw();
+	if (bkgdLoadingTwo != nullptr && visibilities::animations) {
+		//animation logic
+		Loading::bkgdLoadingOne->setDisplacement(0, 1);
+		Loading::bkgdLoadingTwo->setDisplacement(0, 1);
+		if (bkgdLoadingOne->getPos()[1] == 0) {
+			Loading::bkgdLoadingTwo->setPos(0, -Loading::bkgdLoadingTwo->m_Height);
 		}
-		return true;
+		else if (bkgdLoadingTwo->getPos()[1] == 0) {
+			Loading::bkgdLoadingOne->setPos(0, -Loading::bkgdLoadingOne->m_Height);
+		}
+
+		Loading::bkgdLoadingTwo->draw();
 	}
-	return false;
+	return true;
 }
 
 

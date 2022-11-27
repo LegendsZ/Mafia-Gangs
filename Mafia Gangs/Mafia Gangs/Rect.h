@@ -25,7 +25,7 @@ public:
 	int m_R, m_G, m_B, m_A;
 
 	void (*m_Handler)(SDL_Event&) = nullptr;
-private:
-	int m_Pos[2] = { 0,0 };
 	SDL_Texture* m_Texture = nullptr;
+	int m_Pos[2] = { 0,0 };
+private:
 };
