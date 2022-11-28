@@ -92,10 +92,15 @@ void Menu::btnPlayClickEvent(SDL_Event& event) {
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		if (mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
 			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs");
-			visibilities::loadingVisibility = true;
 			visibilities::menuVisibility = false;
-			Loading::loader = Menu::gameLoader;
-			SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
+			if (!Game::loaded) {
+				visibilities::loadingVisibility = true;
+				Loading::loader = Menu::gameLoader;
+				SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
+			}
+			else {
+				visibilities::gameVisibility = true;
+			}
 		}
 	}
 }

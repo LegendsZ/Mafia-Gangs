@@ -5,11 +5,14 @@
 #include "ScreenVisibility.h"
 #include "Dialog.h"
 #include "HUD.h"
+#include "CollisionMap.h"
 #include <vector>
 
 struct Player {
 public:
 	static Rect* player;
+	static int x;
+	static int y;
 	static float playerSpeed;
 	static float basePlayerSpeed;
 	static float runSpeed;
@@ -30,6 +33,7 @@ public:
 	static float magnification;
 	static Player* player;
 	static HUD* hud;
+	static bool loaded;
 	static bool gameLogic();
 	static bool Initialize(bool enabled, int screenSizeX, int screenSizeY);
 	static bool pollEvents();

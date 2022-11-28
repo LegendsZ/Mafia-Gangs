@@ -8,12 +8,14 @@ float Game::magnification = 2;
 Rect* Game::bkgdsGame[9];
 Dialog* Game::dialog = nullptr;
 HUD* Game::hud = nullptr;
-
+bool Game::loaded = false;
+int Player::x;
+int Player::y;
 Player* Game::player;
 Rect* Player::player;
-float Player::playerSpeed = 2;
+float Player::playerSpeed = 1*Game::magnification;
 float Player::basePlayerSpeed = Player::playerSpeed;
-float Player::runSpeed = 4;
+float Player::runSpeed = 2*Game::magnification;
 bool Player::run = false;
 Uint32 Player::shiftLetGo = NULL;
 bool Player::w = false;
@@ -45,8 +47,12 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 		}
 	}
 	Game::player = new Player();
-	player->player = new Rect(25, 25, screenSizeX / 2 - 12.5, screenSizeY / 2 - 12.5, 255, 0, 0, 255);
+	player->x = screenSizeX * magnification / 2;
+	player->y = screenSizeY * magnification / 2;
+	player->player = new Rect(10 * magnification, 10 * magnification, screenSizeX / 2, screenSizeY / 2, 255, 0, 0, 255);
 	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100);
+	CollisionMap::makeMap(screenSizeX * magnification, screenSizeY * magnification);
+	Game::loaded = true;
 	return true;
 }
 
@@ -70,25 +76,33 @@ bool Game::gameLogic() {
 		player->shiftLetGo = SDL_GetTicks();
 		player->playerSpeed = player->runSpeed;
 	}
-	if (player->w) {
+	if (player->w && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y - Player::playerSpeed)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(0, Player::playerSpeed);
 		}
+		player->y -= Player::playerSpeed;
 	}
-	if (player->a) {
+	if (player->a && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x - Player::playerSpeed, player->y)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(Player::playerSpeed,0);
 		}
+		player->x -= Player::playerSpeed;
 	}
-	if (player->s) {
+	if (player->s && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y + Player::playerSpeed)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(0, -Player::playerSpeed);
 		}
+		player->y += Player::playerSpeed;
 	}
-	if (player->d) {
+	if (player->d && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x + Player::playerSpeed, player->y)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(-Player::playerSpeed,0);
 		}
+		player->x += Player::playerSpeed;
+	}
+	if (player->w || player->a || player->s || player->d) {
+		system("cls");
+		std::cout << "(" << player->x << "," << player->y << ")\n";
 	}
 	if (player->run && hud->svalue > 0 && (player->w || player->a || player->s || player->d)) {
 		hud->svalue--;
@@ -98,23 +112,36 @@ bool Game::gameLogic() {
 		player->playerSpeed = player->basePlayerSpeed;
 	}
 
-	if (bkgdsGame[4]->m_Pos[0] >= screenSizeX) {
+	if (bkgdsGame[4]->m_Pos[0] >= screenSizeX) { //work here adjust x/y pos of player.
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(-screenSizeX * magnification, 0);
 		}
+
+		/*ex
+		int counter = 0;
+		for (int j = 0; j < 3; j++) {
+			for (int i = 0; i < 3; i++) {
+				Game::bkgdsGame[counter++]->setPos(screenSizeX * magnification * (i - 1), screenSizeY * magnification * (j - 1));
+			}
+		}*/
+		
+		player->x += screenSizeX * magnification;
 	}else if (bkgdsGame[4]->m_Pos[0] <= -screenSizeX) {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(screenSizeX * magnification, 0);
 		}
+		player->x -= screenSizeX * magnification;
 	} else if (bkgdsGame[4]->m_Pos[1] >= screenSizeY) {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(0,-screenSizeY * magnification);
 		}
+		player->y += screenSizeY * magnification;
 	}
 	else if (bkgdsGame[4]->m_Pos[1] <= -screenSizeY) {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(0, screenSizeY * magnification);
 		}
+		player->y -= screenSizeY * magnification;
 	}
 
 	return true;
@@ -178,6 +205,10 @@ bool Game::pollPlayerControls(SDL_Event& event)
 			player->run = false;
 			player->playerSpeed =player->basePlayerSpeed;
 			break;
+		case SDLK_ESCAPE:
+			visibilities::gameVisibility = false;
+			visibilities::menuVisibility = true;
+			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs | Menu");
 		}
 	}
 	return true;

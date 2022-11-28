@@ -146,8 +146,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CollisionMap.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Loading.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -160,8 +162,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CollisionMap.h" />
     <ClInclude Include="Dialog.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Loading.h" />
     <ClInclude Include="Menu.h" />
