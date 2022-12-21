@@ -27,5 +27,7 @@ public:
 	void (*m_Handler)(SDL_Event&) = nullptr;
 	SDL_Texture* m_Texture = nullptr;
 	int m_Pos[2] = { 0,0 };
+
+	static SDL_Texture* getTexture(std::string img_path);
 private:
 };

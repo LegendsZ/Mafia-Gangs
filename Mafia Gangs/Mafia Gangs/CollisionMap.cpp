@@ -16,7 +16,7 @@ bool CollisionMap::makeMap(int w, int h)
 	return true;
 }
 
-bool CollisionMap::checkCollision(int w, int h, int x, int y) //check memory it's collecting
+bool CollisionMap::checkCollision(int w, int h, int x, int y) //instead of checking all 4 coords, maybe only check the one that is possible (by movement)
 {
 	int size = w * h / 8;
 	int indextl = ((CollisionMap::screenSizeX * y + x) / 8) % size;

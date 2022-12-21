@@ -145,11 +145,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollisionMap.cpp" />
     <ClCompile Include="Dialog.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Loading.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -161,14 +164,18 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionMap.h" />
     <ClInclude Include="Dialog.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Gun.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Loading.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="ScreenVisibility.h" />
     <ClInclude Include="Settings.h" />

@@ -13,17 +13,7 @@ Rect::Rect(int w, int h, int x, int y, const std::string& img_path) :
 {
 	m_Pos[0] = x;
 	m_Pos[1] = y;
-	SDL_Surface* surface = IMG_Load(img_path.c_str());
-	if (!surface) {
-		std::cerr << "Failed to create surface!\n";
-		return;
-	}
-	m_Texture = SDL_CreateTextureFromSurface(Window::renderer, surface);
-	if (!m_Texture) {
-		std::cerr << "Failed to create texture!\n";
-		return;
-	}
-	SDL_FreeSurface(surface);
+	m_Texture = Rect::getTexture(img_path.c_str());
 }
 
 Rect::~Rect()
@@ -33,7 +23,7 @@ Rect::~Rect()
 
 void Rect::draw() const
 {
-	SDL_Rect rect = { m_Pos[0], m_Pos[1], m_Width, m_Height };
+	SDL_Rect rect = { m_Pos[0], m_Pos[1], m_Width, m_Height }; //probably should store it rather than keep making new rects
 	if (m_Texture) {
 		SDL_RenderCopy(Window::renderer, m_Texture, nullptr, &rect);
 	}
@@ -87,17 +77,23 @@ bool Rect::setDisplacement(int x, int y)
 bool Rect::changeImage(std::string& img_path)
 {
 	current_img_path = img_path;
+	SDL_DestroyTexture(m_Texture);
+	m_Texture = Rect::getTexture(img_path.c_str());
+	return true;
+}
+
+SDL_Texture* Rect::getTexture(std::string img_path)
+{
 	SDL_Surface* surface = IMG_Load(img_path.c_str());
 	if (!surface) {
 		std::cerr << "Failed to create surface!\n";
-		return false;
+		return nullptr;
 	}
-	SDL_DestroyTexture(m_Texture);
-	m_Texture = SDL_CreateTextureFromSurface(Window::renderer, surface);
-	if (!m_Texture) {
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(Window::renderer, surface);
+	if (!texture) {
 		std::cerr << "Failed to create texture!\n";
-		return false;
+		return nullptr;
 	}
 	SDL_FreeSurface(surface);
-	return true;
+	return texture;
 }

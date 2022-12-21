@@ -5,24 +5,13 @@
 #include "ScreenVisibility.h"
 #include "Dialog.h"
 #include "HUD.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Gun.h"
 #include "CollisionMap.h"
 #include <vector>
 
-struct Player {
-public:
-	static Rect* player;
-	static int x;
-	static int y;
-	static float playerSpeed;
-	static float basePlayerSpeed;
-	static float runSpeed;
-	static bool run;
-	static Uint32 shiftLetGo;
-	static bool w;
-	static bool a;
-	static bool s;
-	static bool d;
-};
+
 
 class Game {
 public:
@@ -32,6 +21,7 @@ public:
 	static Rect* bkgdsGame[];
 	static float magnification;
 	static Player* player;
+	static std::vector<Enemy*> enemies;
 	static HUD* hud;
 	static bool loaded;
 	static bool gameLogic();

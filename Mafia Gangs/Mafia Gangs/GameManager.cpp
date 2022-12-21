@@ -12,6 +12,22 @@ bool GameManager::Initialize()
 	mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
 	visibilities::windowPTRVOID = mainWindow;
 	mainWindow->setWindowIcon("res/icon.jpg");
+
+	//texture loading is here because it should happen in main thread.
+	Player::wT = Rect::getTexture("res/playerw.jpg");
+	Player::aT = Rect::getTexture("res/playera.jpg");
+	Player::sT = Rect::getTexture("res/players.jpg");
+	Player::dT = Rect::getTexture("res/playerd.jpg");
+	Enemy::wT = Rect::getTexture("res/enemyw.png");
+	Enemy::aT = Rect::getTexture("res/enemya.png");
+	Enemy::sT = Rect::getTexture("res/enemys.png");
+	Enemy::dT = Rect::getTexture("res/enemyd.png");
+	Gun::wT = Rect::getTexture("res/bulletw.png");
+	Gun::aT = Rect::getTexture("res/bulletw.png");
+	Gun::sT = Rect::getTexture("res/bulletw.png");
+	Gun::dT = Rect::getTexture("res/bulletw.png");
+
+
 	Menu::Initialize(true, screenSizeX, screenSizeY);
 	Loading::Initialize(false, screenSizeX, screenSizeY); //add initailized variable to each class so that it only initializes if it has to
 	Settings::Initialize(false, screenSizeX, screenSizeY);
