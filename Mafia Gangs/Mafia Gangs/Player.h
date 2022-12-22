@@ -8,6 +8,7 @@ public:
 	static float basePlayerSpeed;
 	static float runSpeed;
 	static bool run;
+	static bool firing;
 	static Uint32 shiftLetGo;
 	static bool w;
 	static bool a;

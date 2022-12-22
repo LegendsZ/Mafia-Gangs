@@ -18,6 +18,7 @@ float Player::playerSpeed = 1*Game::magnification;
 float Player::basePlayerSpeed = Player::playerSpeed;
 float Player::runSpeed = 2*Game::magnification;
 bool Player::run = false;
+bool Player::firing = false;
 Uint32 Player::shiftLetGo = NULL;
 bool Player::w = false;
 bool Player::a = false;
@@ -60,7 +61,7 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	for (int i = 0; i < 1; i++) {
 		enemies.push_back(new Enemy(10 * magnification, 10 * magnification, screenSizeX / 2, screenSizeY / 2, Player::runSpeed, Player::basePlayerSpeed));
 	}
-	gun = new Gun(10, 3, 20,20,1,"res/bullet.jpg");
+	gun = new Gun(10, 3, 20,20,5,250,"res/bullet.jpg");
 
 	Game::loaded = true;
 	return true;
@@ -84,6 +85,23 @@ bool Game::draw() {
 	return true;
 }
 bool Game::gameLogic() {
+	if (player->firing) {
+		SDL_Texture* localTexture = player->player->m_Texture;
+		if (localTexture == Player::wT) {
+			gun->m_direction = 'w';
+		}
+		else if (localTexture == Player::aT) {
+			gun->m_direction = 'a';
+		}
+		else if (localTexture == Player::sT) {
+			gun->m_direction = 's';
+		}
+		else if (localTexture == Player::dT) {
+			gun->m_direction = 'd';
+		}
+		gun->fire(screenSizeX / 2, screenSizeY / 2);
+	}
+	gun->moveBullets();
 	if (hud->svalue != 100 && SDL_GetTicks() - player->shiftLetGo > 3000) {
 		hud->svalue++;
 		hud->updateStamina();
@@ -100,6 +118,7 @@ bool Game::gameLogic() {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies[i]->setDisplacement(0, Player::playerSpeed);
 		}
+		gun->setBulletDisplacement(0, Player::playerSpeed);
 	}
 	if (player->a && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x - Player::playerSpeed, player->y)) {
 		for (int i = 0; i < 9; i++) {
@@ -109,6 +128,7 @@ bool Game::gameLogic() {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies[i]->setDisplacement(Player::playerSpeed,0);
 		}
+		gun->setBulletDisplacement(Player::playerSpeed,0);
 	}
 	if (player->s && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y + Player::playerSpeed)) {
 		for (int i = 0; i < 9; i++) {
@@ -118,6 +138,7 @@ bool Game::gameLogic() {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies[i]->setDisplacement(0, -Player::playerSpeed);
 		}
+		gun->setBulletDisplacement(0, -Player::playerSpeed);
 	}
 	if (player->d && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x + Player::playerSpeed, player->y)) {
 		for (int i = 0; i < 9; i++) {
@@ -127,11 +148,12 @@ bool Game::gameLogic() {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies[i]->setDisplacement(-Player::playerSpeed,0);
 		}
+		gun->setBulletDisplacement(-Player::playerSpeed,0);
 	}
-	if (player->w || player->a || player->s || player->d) {
+	/*if (player->w || player->a || player->s || player->d) {
 		system("cls");
 		std::cout << "(" << player->x << "," << player->y << ")\n";
-	}
+	}*/
 	if (player->run && hud->svalue > 0 && (player->w || player->a || player->s || player->d)) {
 		hud->svalue--;
 		hud->updateStamina();
@@ -209,19 +231,7 @@ bool Game::pollPlayerControls(SDL_Event& event)
 			}
 			break;
 		case SDLK_SPACE:
-			SDL_Texture* localTexture = player->player->m_Texture;
-			if (localTexture == Player::wT) {
-				gun->m_direction = 'w';
-			}else if (localTexture == Player::aT) {
-				gun->m_direction = 'a';
-			}
-			else if(localTexture == Player::sT) {
-				gun->m_direction = 's';
-			}
-			else if(localTexture == Player::dT) {
-				gun->m_direction = 'd';
-			}
-			gun->fire(screenSizeX / 2, screenSizeY / 2);
+			player->firing = true;
 		}
 	}
 	else if (event.type == SDL_KEYUP) {
@@ -238,10 +248,16 @@ bool Game::pollPlayerControls(SDL_Event& event)
 		case SDLK_d:
 			player->d = false;
 			break;
+		case SDLK_r:
+			gun->reload();
+			break;
 		case SDLK_LSHIFT:
 			player->shiftLetGo = SDL_GetTicks();
 			player->run = false;
 			player->playerSpeed =player->basePlayerSpeed;
+			break;
+		case SDLK_SPACE:
+			player->firing = false;
 			break;
 		case SDLK_ESCAPE:
 			visibilities::gameVisibility = false;

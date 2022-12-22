@@ -23,9 +23,9 @@ bool GameManager::Initialize()
 	Enemy::sT = Rect::getTexture("res/enemys.png");
 	Enemy::dT = Rect::getTexture("res/enemyd.png");
 	Gun::wT = Rect::getTexture("res/bulletw.png");
-	Gun::aT = Rect::getTexture("res/bulletw.png");
-	Gun::sT = Rect::getTexture("res/bulletw.png");
-	Gun::dT = Rect::getTexture("res/bulletw.png");
+	Gun::aT = Rect::getTexture("res/bulleta.png");
+	Gun::sT = Rect::getTexture("res/bullets.png");
+	Gun::dT = Rect::getTexture("res/bulletd.png");
 
 
 	Menu::Initialize(true, screenSizeX, screenSizeY);
@@ -64,8 +64,9 @@ void GameManager::Run()
 			SDL_Delay(toDelay);
 		}
 		if ((SDL_GetTicks() - lastFrame) / 1000.0 >= 1) {
-			//system("cls");
-			//std::cout << "FPS: " << --framesCount;
+			system("cls");
+			std::cout << "Initializing...OK!\n";
+			std::cout << "FPS: " << --framesCount;
 			framesCount = 0;
 			lastFrame = SDL_GetTicks();
 		}
