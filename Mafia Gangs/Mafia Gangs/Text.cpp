@@ -1,6 +1,6 @@
 #include "Text.h"
 
-Text::Text(SDL_Renderer* renderer, const std::string& font_path, int font_size, const std::string& message, const SDL_Color& color) :
+Text::Text(SDL_Renderer* renderer, const std::string font_path, int font_size, const std::string& message, const SDL_Color color) :
 	m_FontPath(font_path), m_FontSize(font_size), m_Color(color)
 {
 	m_Renderer = renderer;
@@ -22,7 +22,7 @@ void Text::display() const
 	SDL_RenderCopy(m_Renderer, m_Texture, nullptr, &m_TextRect);
 }
 
-SDL_Texture* Text::loadFont(SDL_Renderer* renderer, const std::string& font_path, int font_size, const std::string& message, const SDL_Color& color)
+SDL_Texture* Text::loadFont(SDL_Renderer* renderer, const std::string font_path, int font_size, const std::string& message, const SDL_Color color)
 {
 	TTF_Font* font = TTF_OpenFont(font_path.c_str(), font_size);
 	m_Font = font;

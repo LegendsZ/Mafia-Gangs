@@ -4,7 +4,7 @@ unsigned int GameManager::framesCap=60;
 unsigned int GameManager::framesCount=0;
 Uint32 GameManager::iStart;
 Uint32 GameManager::lastFrame;
-unsigned int GameManager::screenSizeX = 800, GameManager::screenSizeY = 500;
+unsigned int GameManager::screenSizeX = 1250, GameManager::screenSizeY = 900; //800 x 500
 
 bool GameManager::Initialize()
 {

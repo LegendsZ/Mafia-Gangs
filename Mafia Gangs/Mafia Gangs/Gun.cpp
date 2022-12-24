@@ -5,8 +5,8 @@ SDL_Texture* Gun::aT = nullptr;
 SDL_Texture* Gun::sT = nullptr;
 SDL_Texture* Gun::dT = nullptr;
 
-Gun::Gun(int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown,std::string texturePath):
-	m_lastShot(NULL), m_coolDown(coolDown),m_reserveAmmo(reserveAmmo), m_magSize(magSize), m_magAmmo(magSize), m_bulletWidth(bulletWidth), m_bulletHeight(bulletHeight), m_direction('w'), m_bulletVelocity(bulletVelocity)
+Gun::Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown,std::string texturePath):
+	m_name(name),m_lastShot(NULL), m_coolDown(coolDown),m_reserveAmmo(reserveAmmo), m_magSize(magSize), m_magAmmo(magSize), m_bulletWidth(bulletWidth), m_bulletHeight(bulletHeight), m_direction('w'), m_bulletVelocity(bulletVelocity)
 {
 }
 
@@ -65,7 +65,6 @@ bool Gun::reload() {
 		m_reserveAmmo = 0;
 	}
  	return true;
-	
 }
 bool Gun::setBulletDisplacement(int x, int y)
 {

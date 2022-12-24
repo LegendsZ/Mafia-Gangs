@@ -7,6 +7,12 @@
 class Menu {
 public:
 	//static bool enabled;
+
+	static int DEFAULTSCREENX, DEFAULTSCREENY;
+	static float magnification;
+	static float magnificationX;
+	static float magnificationY;
+
 	static unsigned int screenSizeX,screenSizeY;
 	static unsigned int mouseX, mouseY;
 	static Rect* bkgdMenu;

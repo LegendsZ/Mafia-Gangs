@@ -2,8 +2,11 @@
 
 //bool Menu::enabled;
 int Game::screenSizeX, Game::screenSizeY;
+int Game::DEFAULTSCREENX = 800, Game::DEFAULTSCREENY = 500;
 unsigned int Game::mouseX, Game::mouseY;
 float Game::magnification = 2;
+float Game::magnificationX = Game::magnification;
+float Game::magnificationY = Game::magnification;
 //Rect* Game::bkgdGame;
 Rect* Game::bkgdsGame[9];
 Dialog* Game::dialog = nullptr;
@@ -16,7 +19,7 @@ int Player::y;
 Rect* Player::player;
 float Player::playerSpeed = 1*Game::magnification;
 float Player::basePlayerSpeed = Player::playerSpeed;
-float Player::runSpeed = 2*Game::magnification;
+float Player::runSpeed = 2 * Player::basePlayerSpeed;
 bool Player::run = false;
 bool Player::firing = false;
 Uint32 Player::shiftLetGo = NULL;
@@ -37,31 +40,33 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	visibilities::gameVisibility = enabled;
 	Game::screenSizeX = screenSizeX;
 	Game::screenSizeY = screenSizeY;
+	
+	Game::magnificationX = (Game::magnificationX / Game::DEFAULTSCREENX) * screenSizeX;//(float)(screenSizeX) / (Game::magnificationX * 800);
+	Game::magnificationY = (Game::magnificationY / Game::DEFAULTSCREENY) * screenSizeY;//(float)(screenSizeY) / (Game::magnificationY * 500);
 	int counter = 0;
-
 	SDL_Texture* texture = Rect::getTexture("res/bkgdGame.jpg");
 	for (int j = 0; j < 3; j++) {
 		for (int i = 0; i < 3; i++) {
-			Game::bkgdsGame[counter] = (new Rect(screenSizeX * magnification, screenSizeY * magnification, screenSizeX * magnification * (i - 1), screenSizeY * magnification * (j - 1), 255, 255, 255, 1));
+			Game::bkgdsGame[counter] = (new Rect(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY, screenSizeX * Game::magnificationX * (i - 1), screenSizeY * Game::magnificationY * (j - 1), 255, 255, 255, 1));
 			Game::bkgdsGame[counter++]->m_Texture = texture;
 		}
 	}
 	Game::player = new Player();
-	player->x = screenSizeX * magnification / 2;
-	player->y = screenSizeY * magnification / 2;
-	player->player = new Rect(10 * magnification, 10 * magnification, screenSizeX / 2, screenSizeY / 2, 255, 0, 0, 255);
+	player->x = screenSizeX * Game::magnificationX / 2;
+	player->y = screenSizeY * Game::magnificationY / 2;
+	player->player = new Rect(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2, 255, 0, 0, 255);
 
 
+	gun = new Gun("M1911",32, 8, 20,20,15,250,"res/bullet.jpg");
 
-	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100);
-	CollisionMap::makeMap(screenSizeX * magnification, screenSizeY * magnification);
+	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo);
+	CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY);
 
 	player->player->m_Texture = Player::wT;
 
 	for (int i = 0; i < 1; i++) {
-		enemies.push_back(new Enemy(10 * magnification, 10 * magnification, screenSizeX / 2, screenSizeY / 2, Player::runSpeed, Player::basePlayerSpeed));
+		enemies.push_back(new Enemy(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2, Player::runSpeed, Player::basePlayerSpeed));
 	}
-	gun = new Gun(10, 3, 20,20,5,250,"res/bullet.jpg");
 
 	Game::loaded = true;
 	return true;
@@ -99,7 +104,10 @@ bool Game::gameLogic() {
 		else if (localTexture == Player::dT) {
 			gun->m_direction = 'd';
 		}
-		gun->fire(screenSizeX / 2, screenSizeY / 2);
+		if (gun->fire(screenSizeX / 2, screenSizeY / 2)) {
+			hud->mammovalue--;
+			hud->updateAmmo();
+		}
 	}
 	gun->moveBullets();
 	if (hud->svalue != 100 && SDL_GetTicks() - player->shiftLetGo > 3000) {
@@ -150,7 +158,7 @@ bool Game::gameLogic() {
 		}
 		gun->setBulletDisplacement(-Player::playerSpeed,0);
 	}
-	/*if (player->w || player->a || player->s || player->d) {
+	/*/if (player->w || player->a || player->s || player->d) {
 		system("cls");
 		std::cout << "(" << player->x << "," << player->y << ")\n";
 	}*/
@@ -162,28 +170,27 @@ bool Game::gameLogic() {
 		player->playerSpeed = player->basePlayerSpeed;
 	}
 
-	if (bkgdsGame[4]->m_Pos[0] >= screenSizeX) {
+	if (bkgdsGame[4]->m_Pos[0] >= screenSizeX * Game::magnificationX) { //added the * gamemag to each one
 		for (int i = 0; i < 9; i++) {
-			Game::bkgdsGame[i]->setDisplacement(-screenSizeX * magnification, 0);
+			Game::bkgdsGame[i]->setDisplacement(-screenSizeX * Game::magnificationX, 0);
 		}
-		
-		player->x += screenSizeX * magnification;
-	}else if (bkgdsGame[4]->m_Pos[0] <= -screenSizeX) {
+		player->x += screenSizeX * Game::magnificationX;
+	}else if (bkgdsGame[4]->m_Pos[0] <= -screenSizeX * Game::magnificationX) {
 		for (int i = 0; i < 9; i++) {
-			Game::bkgdsGame[i]->setDisplacement(screenSizeX * magnification, 0);
+			Game::bkgdsGame[i]->setDisplacement(screenSizeX * Game::magnificationX, 0);
 		}
-		player->x -= screenSizeX * magnification;
-	} else if (bkgdsGame[4]->m_Pos[1] >= screenSizeY) {
+		player->x -= screenSizeX * Game::magnificationX;
+	} else if (bkgdsGame[4]->m_Pos[1] >= screenSizeY * Game::magnificationY) {
 		for (int i = 0; i < 9; i++) {
-			Game::bkgdsGame[i]->setDisplacement(0,-screenSizeY * magnification);
+			Game::bkgdsGame[i]->setDisplacement(0,-screenSizeY * Game::magnificationY);
 		}
-		player->y += screenSizeY * magnification;
+		player->y += screenSizeY * Game::magnificationY;
 	}
-	else if (bkgdsGame[4]->m_Pos[1] <= -screenSizeY) {
+	else if (bkgdsGame[4]->m_Pos[1] <= -screenSizeY * Game::magnificationY) {
 		for (int i = 0; i < 9; i++) {
-			Game::bkgdsGame[i]->setDisplacement(0, screenSizeY * magnification);
+			Game::bkgdsGame[i]->setDisplacement(0, screenSizeY * Game::magnificationY);
 		}
-		player->y -= screenSizeY * magnification;
+		player->y -= screenSizeY * Game::magnificationY;
 	}
 
 	return true;
@@ -250,6 +257,9 @@ bool Game::pollPlayerControls(SDL_Event& event)
 			break;
 		case SDLK_r:
 			gun->reload();
+			hud->mammovalue = gun->m_magAmmo;
+			hud->rammovalue = gun->m_reserveAmmo;
+			hud->updateAmmo();
 			break;
 		case SDLK_LSHIFT:
 			player->shiftLetGo = SDL_GetTicks();

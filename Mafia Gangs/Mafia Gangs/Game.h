@@ -15,11 +15,14 @@
 
 class Game {
 public:
+	static int DEFAULTSCREENX, DEFAULTSCREENY;
 	static int screenSizeX, screenSizeY;
 	static unsigned int mouseX, mouseY;
 	//static Rect* bkgdGame;
 	static Rect* bkgdsGame[];
 	static float magnification;
+	static float magnificationX;
+	static float magnificationY;
 	static Player* player;
 	static std::vector<Enemy*> enemies;
 	static HUD* hud;

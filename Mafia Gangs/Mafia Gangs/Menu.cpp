@@ -2,6 +2,11 @@
 
 
 //bool Menu::enabled;
+int Menu::DEFAULTSCREENX = 800, Menu::DEFAULTSCREENY = 500;
+float Menu::magnification = 1;
+float Menu::magnificationX = Menu::magnification;
+float Menu::magnificationY = Menu::magnification;
+
 unsigned int Menu::screenSizeX, Menu::screenSizeY;
 unsigned int Menu::mouseX, Menu::mouseY;
 Rect* Menu::bkgdMenu;
@@ -16,33 +21,37 @@ bool Menu::Initialize(bool enabled, unsigned int screenSizeX, unsigned int scree
 	visibilities::menuVisibility= enabled;
 	Menu::screenSizeX = screenSizeX;
 	Menu::screenSizeY = screenSizeY;
+	Menu::magnificationX = (Menu::magnificationX / Menu::DEFAULTSCREENX) * screenSizeX;
+	Menu::magnificationY = (Menu::magnificationY / Menu::DEFAULTSCREENY)* screenSizeY;
+
+
 	Menu::bkgdMenu = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.jpg");
-	Menu::title= new Rect(250, 125, 465, 25, "res/menutitle.png");
+	Menu::title= new Rect(250* Menu::magnificationX, 125* Menu::magnificationY, 465* Menu::magnificationX, 25* Menu::magnificationY, "res/menutitle.png");
 
 	Menu::btnPlay = new Button(
-		175, 75,
-		500,
-		175,
+		175 * Menu::magnificationX, 75 * Menu::magnificationY,
+		500 * Menu::magnificationX,
+		175 * Menu::magnificationY,
 		"res/menuBtnPlay.png", Menu::btnPlayClickEvent);
 	Menu::btnSettings = new Button(
-		175, 75,
-		500,
-		275,
+		175* Menu::magnificationX, 75 * Menu::magnificationY,
+		500* Menu::magnificationX,
+		275* Menu::magnificationY,
 		"res/menuBtnSettings.png", Menu::btnSettingsClickEvent);
 	Menu::btnExit = new Button(
-		175, 75,
-		500,
-		375,
+		175* Menu::magnificationX, 75* Menu::magnificationY,
+		500* Menu::magnificationX,
+		375* Menu::magnificationY,
 		"res/menuBtnExit.png", Menu::btnExitClickEvent);
 	return true;
 }
 
 bool Menu::draw() {
 	if (visibilities::animations) {
-		if (btnPlay->getPos()[0] <= 450) {
+		if (btnPlay->getPos()[0] <= 450 * Menu::magnificationX) {
 			Menu::btnAnimationIncrementor *= -1;
 		}
-		else if (btnPlay->getPos()[0] >= 500) {
+		else if (btnPlay->getPos()[0] >= 500 * Menu::magnificationX) {
 			Menu::btnAnimationIncrementor *= -1;
 		}
 		btnPlay->setPos(btnPlay->getPos()[0] - btnAnimationIncrementor, btnPlay->getPos()[1]);

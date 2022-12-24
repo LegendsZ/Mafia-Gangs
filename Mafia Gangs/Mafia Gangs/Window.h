@@ -9,6 +9,7 @@
 
 class Window {
 public:
+
 	Window(const std::string& title, int width, int height);
 	~Window();
 	bool setWindowIcon(std::string path);
@@ -30,10 +31,9 @@ public:
 private:
 	bool init();
 
-
 	std::string m_Title;
 	int m_Width = 800;
-	int m_Height = 600;
+	int m_Height = 500;
 	bool m_isClosed = false;
 
 	int m_R = 0;
