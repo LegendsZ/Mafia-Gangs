@@ -1,6 +1,7 @@
 #pragma once
 #include "Bullet.h"
 #include <vector>
+#include "Audio.h"
 
 class Gun {
 public:
@@ -22,6 +23,9 @@ public:
 	std::vector<Bullet*> m_bullets;
 	char m_direction;
 
+	static Mix_Chunk* shootsound;
+	static Mix_Chunk* reloadsound;
+
 	Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown, std::string texturePath);
 
 	bool drawBullets(int screenSizeX, int screenSizeY);
@@ -29,6 +33,7 @@ public:
 	bool moveBullets();
 	bool setBulletDisplacement(int x, int y);
 	bool checkCollision();
+	bool deleteBullets();
 	bool reload();
 private:
 };

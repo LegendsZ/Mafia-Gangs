@@ -110,6 +110,7 @@ void Menu::btnPlayClickEvent(SDL_Event& event) {
 			else {
 				visibilities::gameVisibility = true;
 			}
+			Audio::resumeMusic();
 		}
 	}
 }

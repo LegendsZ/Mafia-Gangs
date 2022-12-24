@@ -4,7 +4,7 @@ unsigned int GameManager::framesCap=60;
 unsigned int GameManager::framesCount=0;
 Uint32 GameManager::iStart;
 Uint32 GameManager::lastFrame;
-unsigned int GameManager::screenSizeX = 1250, GameManager::screenSizeY = 900; //800 x 500
+unsigned int GameManager::screenSizeX = 1250, GameManager::screenSizeY = 750; //800 x 500
 
 bool GameManager::Initialize()
 {
@@ -13,6 +13,7 @@ bool GameManager::Initialize()
 	visibilities::windowPTRVOID = mainWindow;
 	mainWindow->setWindowIcon("res/icon.jpg");
 
+	srand(time(NULL));
 	//texture loading is here because it should happen in main thread.
 	Player::wT = Rect::getTexture("res/playerw.jpg");
 	Player::aT = Rect::getTexture("res/playera.jpg");
@@ -26,7 +27,10 @@ bool GameManager::Initialize()
 	Gun::aT = Rect::getTexture("res/bulleta.png");
 	Gun::sT = Rect::getTexture("res/bullets.png");
 	Gun::dT = Rect::getTexture("res/bulletd.png");
-
+	Gun::shootsound = Mix_LoadWAV("res/m1911shoot.mp3");
+	Gun::reloadsound = Mix_LoadWAV("res/m1911reload.mp3");
+	Game::bkgd = Rect::getTexture("res/bkgdGame.jpg");
+	Game::bkgdMusic = Mix_LoadMUS("res/zombies.mp3");
 
 	Menu::Initialize(true, screenSizeX, screenSizeY);
 	Loading::Initialize(false, screenSizeX, screenSizeY); //add initailized variable to each class so that it only initializes if it has to
@@ -66,7 +70,10 @@ void GameManager::Run()
 		if ((SDL_GetTicks() - lastFrame) / 1000.0 >= 1) {
 			system("cls");
 			std::cout << "Initializing...OK!\n";
-			std::cout << "FPS: " << --framesCount;
+			std::cout << "FPS: " << framesCount;
+			if (Game::hud) {
+				Game::hud->updateFPSCounter(--framesCount);
+			}
 			framesCount = 0;
 			lastFrame = SDL_GetTicks();
 		}

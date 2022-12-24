@@ -5,6 +5,9 @@ SDL_Texture* Gun::aT = nullptr;
 SDL_Texture* Gun::sT = nullptr;
 SDL_Texture* Gun::dT = nullptr;
 
+Mix_Chunk* Gun::shootsound = nullptr;
+Mix_Chunk* Gun::reloadsound = nullptr;
+
 Gun::Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown,std::string texturePath):
 	m_name(name),m_lastShot(NULL), m_coolDown(coolDown),m_reserveAmmo(reserveAmmo), m_magSize(magSize), m_magAmmo(magSize), m_bulletWidth(bulletWidth), m_bulletHeight(bulletHeight), m_direction('w'), m_bulletVelocity(bulletVelocity)
 {
@@ -25,6 +28,7 @@ bool Gun::fire(int x, int y) {
 	if (m_magAmmo == 0) {
 		return false;
 	}
+	Audio::playEffect(shootsound, 0, 1);
 	Bullet* bullet = new Bullet(m_bulletWidth, m_bulletHeight, x,y,m_direction, nullptr);
 	switch (m_direction) {
 	case 'w':
@@ -55,6 +59,10 @@ bool Gun::moveBullets()
 }
 
 bool Gun::reload() {
+	if (m_magAmmo == m_magSize) {
+		return false;
+	}
+	Audio::playEffect(reloadsound, 0, 1);
 	int reFill = m_magSize - m_magAmmo;
 	if (reFill <= m_reserveAmmo) {
 		m_reserveAmmo -= reFill;
@@ -71,6 +79,14 @@ bool Gun::setBulletDisplacement(int x, int y)
 	for (int i = 0; i < m_bullets.size(); i++) {
 		m_bullets[i]->m_bullet->setDisplacement(x,y);
 	}
+	return true;
+}
+bool Gun::deleteBullets()
+{
+	for (int i = 0; i < m_bullets.size(); i++) {
+		delete m_bullets[i];
+	}
+	m_bullets.clear();
 	return true;
 }
 bool Gun::checkCollision() {

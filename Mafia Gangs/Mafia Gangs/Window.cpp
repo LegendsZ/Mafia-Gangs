@@ -19,6 +19,7 @@ Window::~Window() {
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
+	Mix_Quit();
 }
 
 bool Window::setWindowIcon(std::string path)
@@ -89,7 +90,18 @@ bool Window::init() {
 		return false;
 	}
 
-	//Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	int result = 0;
+	if (MIX_INIT_MP3 != (result = Mix_Init(MIX_INIT_MP3))) {
+		std::cout << "Could not initialize mixer (result: " << result << ").\n";
+		std::cout << "Mix_Init: "<<  Mix_GetError() << "\n";
+		return false;
+	}
+	//Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2096) < 0) {
+		std::cout << "Could not initialize mixer (result: " << result << ").\n";
+		std::cout << "Open Audio: " << Mix_GetError() << "\n";
+		return false;
+	}
 	//menuSound = Mix_LoadMUS(menuSound_path.c_str());
 	//gameSound = Mix_LoadMUS(gameSound_path.c_str());
 	//laser_effect = Mix_LoadWAV(laser_effect_path.c_str());

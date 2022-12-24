@@ -33,7 +33,11 @@ SDL_Texture* Player::aT = nullptr;
 SDL_Texture* Player::sT = nullptr;
 SDL_Texture* Player::dT = nullptr;
 
+SDL_Texture* Game::bkgd = nullptr;
+Mix_Music* Game::bkgdMusic = nullptr;
+
 std::vector<Enemy*> Game::enemies;
+unsigned int Game::enemiesSpawn = 30;
 Gun* gun;
 
 bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
@@ -44,11 +48,10 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	Game::magnificationX = (Game::magnificationX / Game::DEFAULTSCREENX) * screenSizeX;//(float)(screenSizeX) / (Game::magnificationX * 800);
 	Game::magnificationY = (Game::magnificationY / Game::DEFAULTSCREENY) * screenSizeY;//(float)(screenSizeY) / (Game::magnificationY * 500);
 	int counter = 0;
-	SDL_Texture* texture = Rect::getTexture("res/bkgdGame.jpg");
 	for (int j = 0; j < 3; j++) {
 		for (int i = 0; i < 3; i++) {
 			Game::bkgdsGame[counter] = (new Rect(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY, screenSizeX * Game::magnificationX * (i - 1), screenSizeY * Game::magnificationY * (j - 1), 255, 255, 255, 1));
-			Game::bkgdsGame[counter++]->m_Texture = texture;
+			Game::bkgdsGame[counter++]->m_Texture = Game::bkgd;
 		}
 	}
 	Game::player = new Player();
@@ -57,18 +60,43 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	player->player = new Rect(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2, 255, 0, 0, 255);
 
 
-	gun = new Gun("M1911",32, 8, 20,20,15,250,"res/bullet.jpg");
+	gun = new Gun("M1911",32, 8, 20,20,15,300,"res/bullet.jpg");
 
-	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo);
+	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn);
 	CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY);
 
 	player->player->m_Texture = Player::wT;
-
-	for (int i = 0; i < 1; i++) {
-		enemies.push_back(new Enemy(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2, Player::runSpeed, Player::basePlayerSpeed));
-	}
-
+	spawnEnemies(500, 30);
+	Mix_PlayMusic(Game::bkgdMusic, -1); //make audio manager
 	Game::loaded = true;
+	return true;
+}
+
+bool Game::spawnEnemies(int range,int count)
+{
+	for (int i = 0; i < count; i++) {
+		enemies.push_back(new Enemy(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed, Player::basePlayerSpeed, 3));
+	}
+	return true;
+}
+
+bool Game::Reset()
+{
+	gun->deleteBullets();
+	gun->m_magAmmo = gun->m_magSize;
+	gun->m_reserveAmmo = 32;
+	hud->updateAmmo();
+	hud->elvalue = Game::enemiesSpawn;
+	//int offsetx = player->x - (screenSizeX * Game::magnificationX / 2);
+	//int offsety = player->y - (screenSizeY * Game::magnificationY / 2);
+	for (int i = 0; i < enemies.size(); i++) {
+		//delete enemies[i];
+		enemies[i] = (new Enemy(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % 500)), screenSizeY / 2 + (i * (rand() % 500)), Player::runSpeed, Player::basePlayerSpeed, 3));
+	}
+	hud->hvalue = 100;
+	hud->svalue = 100;
+	hud->updateHealth();
+	hud->updateStamina();
 	return true;
 }
 
@@ -90,6 +118,24 @@ bool Game::draw() {
 	return true;
 }
 bool Game::gameLogic() {
+	for (int i = 0; i < enemies.size(); i++) {
+		int ret = enemies[i]->gameLogic(screenSizeX / 2, screenSizeY / 2, gun->m_bullets);
+		if (ret == -1) {
+			hud->hvalue--;
+			hud->updateHealth();
+			if (hud->hvalue <= 0) {
+				Reset();
+			}
+		}
+		else if (ret >= 0) {
+			delete enemies[i];
+			enemies.erase(enemies.begin() + i);
+			hud->elvalue--;
+			hud->updateEnemiesLeft();
+			//delete gun->m_bullets[i];
+			gun->m_bullets.erase(gun->m_bullets.begin() + ret);
+		}
+	}
 	if (player->firing) {
 		SDL_Texture* localTexture = player->player->m_Texture;
 		if (localTexture == Player::wT) {
@@ -270,6 +316,7 @@ bool Game::pollPlayerControls(SDL_Event& event)
 			player->firing = false;
 			break;
 		case SDLK_ESCAPE:
+			Audio::pauseMusic();
 			visibilities::gameVisibility = false;
 			visibilities::menuVisibility = true;
 			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs | Menu");

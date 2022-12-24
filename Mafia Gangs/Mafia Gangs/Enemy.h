@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include "Rect.h"
+#include "Bullet.h"
 
 struct Enemy {
 public:
@@ -9,13 +11,14 @@ public:
 	float enemySpeed;
 	float baseEnemySpeed;
 	float runSpeed;
+	float reach;
 	bool run;
 	static SDL_Texture* wT;
 	static SDL_Texture* aT;
 	static SDL_Texture* sT;
 	static SDL_Texture* dT;
 
-	Enemy(int w, int h, int x, int y, float runSpeed, float baseEnemySpeed);
+	Enemy(int w, int h, int x, int y, float runSpeed, float baseEnemySpeed, float reach);
 	bool setDisplacement(int x, int y);
-	void gameLogic(int pX, int pY);
+	int gameLogic(int pX, int pY, std::vector<Bullet*> bullets);
 };
