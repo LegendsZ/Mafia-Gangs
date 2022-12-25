@@ -2,6 +2,7 @@
 #include <vector>
 #include "Rect.h"
 #include "Bullet.h"
+#include "Gun.h"
 
 struct Enemy {
 public:
@@ -20,5 +21,5 @@ public:
 
 	Enemy(int w, int h, int x, int y, float runSpeed, float baseEnemySpeed, float reach);
 	bool setDisplacement(int x, int y);
-	int gameLogic(int pX, int pY, std::vector<Bullet*> bullets);
+	int gameLogic(int pX, int pY, std::vector<Bullet*> bullets, Gun* gun);
 };

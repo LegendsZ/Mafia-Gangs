@@ -35,6 +35,7 @@ bool GameManager::Initialize()
 	Menu::Initialize(true, screenSizeX, screenSizeY);
 	Loading::Initialize(false, screenSizeX, screenSizeY); //add initailized variable to each class so that it only initializes if it has to
 	Settings::Initialize(false, screenSizeX, screenSizeY);
+	GameMode::Initialize(false, screenSizeX, screenSizeY);
 	return true;
 }
 
@@ -56,6 +57,10 @@ void GameManager::Run()
 			Loading::draw();
 			SDL_Event temp;
 			SDL_PollEvent(&temp);
+		}
+		else if (visibilities::gameModeVisibility) {
+			GameMode::draw();
+			GameMode::pollEvents();
 		}
 		else if (visibilities::settingsVisibility) {
 			Settings::draw();

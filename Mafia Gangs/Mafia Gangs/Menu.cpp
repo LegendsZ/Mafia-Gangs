@@ -100,7 +100,10 @@ void Menu::gameLoader() {
 void Menu::btnPlayClickEvent(SDL_Event& event) {
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		if (mouseX >= btnPlay->getPos()[0] && mouseX <= btnPlay->getPos()[0] + btnPlay->m_Rect->m_Width && mouseY >= btnPlay->getPos()[1] && mouseY <= btnPlay->getPos()[1] + btnPlay->m_Rect->m_Height) {
-			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs");
+			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs | Game Mode");
+			visibilities::gameModeVisibility = true;
+			visibilities::menuVisibility = false;
+			/*SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs");
 			visibilities::menuVisibility = false;
 			if (!Game::loaded) {
 				visibilities::loadingVisibility = true;
@@ -110,7 +113,7 @@ void Menu::btnPlayClickEvent(SDL_Event& event) {
 			else {
 				visibilities::gameVisibility = true;
 			}
-			Audio::resumeMusic();
+			Audio::resumeMusic();*/
 		}
 	}
 }

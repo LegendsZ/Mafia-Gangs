@@ -2,8 +2,8 @@
 
 #include <string>
 
-HUD::HUD(int w, int h, int x, int y, std::string pathOutside, unsigned int hvalue, unsigned int svalue, std::string gunName, unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue):
-	hvalue(hvalue),svalue(svalue), gunName(gunName),mammovalue(mammovalue),rammovalue(rammovalue),elvalue(elvalue)
+HUD::HUD(int w, int h, int x, int y, std::string pathOutside, unsigned int hvalue, unsigned int svalue, std::string gunName, unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue) :
+	hvalue(hvalue), svalue(svalue), gunName(gunName), mammovalue(mammovalue), rammovalue(rammovalue), elvalue(elvalue), scorevalue(scorevalue)
 {
 	houtside = new Rect(w, h, x, y, pathOutside);
 	health = new Rect(w, h, x, y, 0,255,0,1);
@@ -17,12 +17,15 @@ HUD::HUD(int w, int h, int x, int y, std::string pathOutside, unsigned int hvalu
 		updateStamina();
 	}
 	ammo = new Text(Window::renderer, "res/comic.ttf", 35, gunName + " " + std::to_string(mammovalue) + "/" + std::to_string(rammovalue), {255,0,0,255});
-	ammo->setPos(x + 2 * w, y);
+	ammo->setPos(x + 2 * w + 10, y);
 	enemiesLeft = new Text(Window::renderer, "res/comic.ttf", 35, "Enemies Left: " + std::to_string(elvalue), { 0,255,0,255 });
 	enemiesLeft->setPos(ammo->getPos()[0] + ammo->m_TextRect.w+10, y);
 
 	fpsCounter = new Text(Window::renderer, "res/comic.ttf", 35, "FPS: 0", { 0,0,255,255 });
 	fpsCounter->setPos(enemiesLeft->getPos()[0] + enemiesLeft->m_TextRect.w + 10, y);
+
+	score = new Text(Window::renderer, "res/comic.ttf", 35, "Cash: " + std::to_string(scorevalue) + "$", {255,0,127,255});
+	score->setPos(fpsCounter->getPos()[0] + fpsCounter->m_TextRect.w + 10, y);
 }
 
 void HUD::updateHealth()
@@ -54,6 +57,13 @@ void HUD::updateFPSCounter(int fps)
 {
 	std::string text = "FPS: " + std::to_string(fps);
 	fpsCounter->setText(text);
+	score->setPos(fpsCounter->getPos()[0] + fpsCounter->m_TextRect.w + 10, fpsCounter->getPos()[1]);
+}
+
+void HUD::updateScore()
+{
+	std::string text = "Cash: " + std::to_string(scorevalue) + "$";
+	score->setText(text);
 }
 
 
@@ -66,4 +76,5 @@ void HUD::draw()
 	ammo->display();
 	enemiesLeft->display();
 	fpsCounter->display();
+	score->display();
 }

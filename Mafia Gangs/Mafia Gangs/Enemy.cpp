@@ -19,10 +19,10 @@ bool Enemy::setDisplacement(int x, int y)
 	return true;
 }
 
-int Enemy::gameLogic(int pX, int pY, std::vector<Bullet*> bullets)
+int Enemy::gameLogic(int pX, int pY, std::vector<Bullet*> bullets, Gun* gun)
 {
 	for (int i = 0; i < bullets.size(); i++) {
-		if (abs(x - bullets[i]->m_bullet->getPos()[0]) <= 6 && abs(y - bullets[i]->m_bullet->getPos()[1]) <= 6) {
+		if (abs(x - bullets[i]->m_bullet->getPos()[0]) <= gun->m_bulletVelocity && abs(y - bullets[i]->m_bullet->getPos()[1]) <= gun->m_bulletVelocity) {
 			return i;
 		}
 	}
@@ -36,7 +36,7 @@ int Enemy::gameLogic(int pX, int pY, std::vector<Bullet*> bullets)
 		enemy->setDisplacement(-1, 0);
 		enemy->m_Texture = Enemy::aT;
 	}
-	else {
+	else if (pX - x > 0) {
 		x++;
 		enemy->setDisplacement(1, 0);
 		enemy->m_Texture = Enemy::dT;
@@ -47,7 +47,7 @@ int Enemy::gameLogic(int pX, int pY, std::vector<Bullet*> bullets)
 		enemy->setDisplacement(0, -1);
 		enemy->m_Texture = Enemy::wT;
 	}
-	else {
+	else if (pY - y > 0) {
 		y++;
 		enemy->setDisplacement(0, 1);
 		enemy->m_Texture = Enemy::sT;

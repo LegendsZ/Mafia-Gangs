@@ -153,6 +153,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="Gun.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Loading.cpp" />
@@ -173,11 +174,11 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameMode.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Loading.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="ScreenVisibility.h" />
     <ClInclude Include="Settings.h" />

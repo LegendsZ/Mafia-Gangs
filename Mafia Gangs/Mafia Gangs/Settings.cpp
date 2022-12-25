@@ -15,7 +15,7 @@ bool Settings::Initialize(bool enabled, unsigned int screenSizeX, unsigned int s
 	visibilities::settingsVisibility = enabled;
 	Settings::screenSizeX = screenSizeX;
 	Settings::screenSizeY = screenSizeY;
-	Settings::bkgdSettings = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.jpg");
+	Settings::bkgdSettings = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdSettings.jpg");
 	Settings::title = new Text(Window::renderer, "res/comic.ttf", 50, "SETTINGS", { 0,225,0,1 });
 	Settings::title->setPos(screenSizeX / 2 + 50, 20);
 

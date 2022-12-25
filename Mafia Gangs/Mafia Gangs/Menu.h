@@ -1,8 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Settings.h"
-#include "Loading.h"
-#include "Game.h"
+#include "GameMode.h"
 
 class Menu {
 public:

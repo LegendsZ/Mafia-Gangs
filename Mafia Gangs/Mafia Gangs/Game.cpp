@@ -62,11 +62,11 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 
 	gun = new Gun("M1911",32, 8, 20,20,15,300,"res/bullet.jpg");
 
-	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn);
+	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn, 0);
 	CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY);
 
 	player->player->m_Texture = Player::wT;
-	spawnEnemies(500, 30);
+	spawnEnemies(500, Game::enemiesSpawn);
 	Mix_PlayMusic(Game::bkgdMusic, -1); //make audio manager
 	Game::loaded = true;
 	return true;
@@ -119,7 +119,7 @@ bool Game::draw() {
 }
 bool Game::gameLogic() {
 	for (int i = 0; i < enemies.size(); i++) {
-		int ret = enemies[i]->gameLogic(screenSizeX / 2, screenSizeY / 2, gun->m_bullets);
+		int ret = enemies[i]->gameLogic(screenSizeX / 2, screenSizeY / 2, gun->m_bullets, gun);
 		if (ret == -1) {
 			hud->hvalue--;
 			hud->updateHealth();
@@ -134,6 +134,8 @@ bool Game::gameLogic() {
 			hud->updateEnemiesLeft();
 			//delete gun->m_bullets[i];
 			gun->m_bullets.erase(gun->m_bullets.begin() + ret);
+			hud->scorevalue += 10;
+			hud->updateScore();
 		}
 	}
 	if (player->firing) {
