@@ -2,16 +2,19 @@
 
 #include <string>
 
-HUD::HUD(int w, int h, int x, int y, std::string pathOutside, unsigned int hvalue, unsigned int svalue, std::string gunName, unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue) :
+SDL_Texture* HUD::outside = nullptr;
+
+HUD::HUD(int w, int h, int x, int y, unsigned int hvalue, unsigned int svalue, std::string gunName, unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue) :
 	hvalue(hvalue), svalue(svalue), gunName(gunName), mammovalue(mammovalue), rammovalue(rammovalue), elvalue(elvalue), scorevalue(scorevalue)
 {
-	houtside = new Rect(w, h, x, y, pathOutside);
+	houtside = new Rect(w, h, x, y, 0,0,0,255);
+	houtside->m_Texture = HUD::outside;
 	health = new Rect(w, h, x, y, 0,255,0,1);
 	if (hvalue != 100) {
 		updateHealth();
 	}
 	soutside = new Rect(w, h, x + w, y, 0, 0, 0, 1);
-	soutside->m_Texture = houtside->m_Texture;
+	soutside->m_Texture = HUD::outside;
 	stamina = new Rect(w, h, x+w, y, 255, 255, 0, 1);
 	if (svalue != 100) {
 		updateStamina();

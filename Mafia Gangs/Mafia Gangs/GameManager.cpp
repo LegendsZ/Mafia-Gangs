@@ -4,7 +4,7 @@ unsigned int GameManager::framesCap=60;
 unsigned int GameManager::framesCount=0;
 Uint32 GameManager::iStart;
 Uint32 GameManager::lastFrame;
-unsigned int GameManager::screenSizeX = 1250, GameManager::screenSizeY = 750; //800 x 500
+unsigned int GameManager::screenSizeX = 626, GameManager::screenSizeY = 626; //1250 x 750
 
 bool GameManager::Initialize()
 {
@@ -27,6 +27,8 @@ bool GameManager::Initialize()
 	Gun::aT = Rect::getTexture("res/bulleta.png");
 	Gun::sT = Rect::getTexture("res/bullets.png");
 	Gun::dT = Rect::getTexture("res/bulletd.png");
+	CollisionMap::collisionImage = IMG_Load("res/collision.bmp");
+	HUD::outside = Rect::getTexture("res/outline.png");
 	Gun::shootsound = Mix_LoadWAV("res/m1911shoot.mp3");
 	Gun::reloadsound = Mix_LoadWAV("res/m1911reload.mp3");
 	Game::bkgd = Rect::getTexture("res/bkgdGame.jpg");
@@ -36,6 +38,7 @@ bool GameManager::Initialize()
 	Loading::Initialize(false, screenSizeX, screenSizeY); //add initailized variable to each class so that it only initializes if it has to
 	Settings::Initialize(false, screenSizeX, screenSizeY);
 	GameMode::Initialize(false, screenSizeX, screenSizeY);
+
 	return true;
 }
 

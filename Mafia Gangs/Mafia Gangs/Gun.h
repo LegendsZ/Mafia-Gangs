@@ -26,7 +26,7 @@ public:
 	static Mix_Chunk* shootsound;
 	static Mix_Chunk* reloadsound;
 
-	Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown, std::string texturePath);
+	Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown);
 
 	bool drawBullets(int screenSizeX, int screenSizeY);
 	bool fire(int x, int y);

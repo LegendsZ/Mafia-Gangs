@@ -5,7 +5,7 @@
 
 int main() {
 	GameManager::Initialize();
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
+	ShowWindow(GetConsoleWindow(), SW_SHOW);
 	GameManager::Run();
 	ShowWindow(GetConsoleWindow(), SW_SHOW);
 	GameManager::Terminate();

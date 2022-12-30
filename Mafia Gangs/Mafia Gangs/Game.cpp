@@ -2,11 +2,11 @@
 
 //bool Menu::enabled;
 int Game::screenSizeX, Game::screenSizeY;
-int Game::DEFAULTSCREENX = 800, Game::DEFAULTSCREENY = 500;
+int Game::DEFAULTSCREENX = 626, Game::DEFAULTSCREENY = 626; //1250x 750y
 unsigned int Game::mouseX, Game::mouseY;
-float Game::magnification = 2;
-float Game::magnificationX = Game::magnification;
-float Game::magnificationY = Game::magnification;
+int Game::magnification = 1;
+int Game::magnificationX = Game::magnification;
+int Game::magnificationY = Game::magnification;
 //Rect* Game::bkgdGame;
 Rect* Game::bkgdsGame[9];
 Dialog* Game::dialog = nullptr;
@@ -45,8 +45,8 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	Game::screenSizeX = screenSizeX;
 	Game::screenSizeY = screenSizeY;
 	
-	Game::magnificationX = (Game::magnificationX / Game::DEFAULTSCREENX) * screenSizeX;//(float)(screenSizeX) / (Game::magnificationX * 800);
-	Game::magnificationY = (Game::magnificationY / Game::DEFAULTSCREENY) * screenSizeY;//(float)(screenSizeY) / (Game::magnificationY * 500);
+	Game::magnificationX = ((float)Game::magnificationX / Game::DEFAULTSCREENX) * screenSizeX;//(float)(screenSizeX) / (Game::magnificationX * 800);
+	Game::magnificationY = ((float)Game::magnificationY / Game::DEFAULTSCREENY) * screenSizeY;//(float)(screenSizeY) / (Game::magnificationY * 500);
 	int counter = 0;
 	for (int j = 0; j < 3; j++) {
 		for (int i = 0; i < 3; i++) {
@@ -55,19 +55,22 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 		}
 	}
 	Game::player = new Player();
-	player->x = screenSizeX * Game::magnificationX / 2;
-	player->y = screenSizeY * Game::magnificationY / 2;
-	player->player = new Rect(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2, 255, 0, 0, 255);
+	player->x = screenSizeX* Game::magnificationX / 2;
+	player->y = screenSizeY* Game::magnificationY / 2+50;
+	player->player = new Rect(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2 + 50, 255, 0, 0, 255);
 
 
-	gun = new Gun("M1911",32, 8, 20,20,15,300,"res/bullet.jpg");
+	gun = new Gun("M1911",32, 8, 10 * Game::magnificationX,10 * Game::magnificationY,15,300);
 
-	hud = new HUD(100, 50, 0, screenSizeY - 50, "res/healthBarOutline.png",100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn, 0);
-	CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY);
+	hud = new HUD(100, 50, 0, screenSizeY - 50,100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn, 0);
+	//CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY,Game::magnificationX, Game::magnificationY);
+	CollisionMap::screenSizeX = screenSizeX * Game::magnificationX;
+	CollisionMap::screenSizeY = screenSizeY * Game::magnificationY;
 
 	player->player->m_Texture = Player::wT;
-	spawnEnemies(500, Game::enemiesSpawn);
-	Mix_PlayMusic(Game::bkgdMusic, -1); //make audio manager
+	//spawnEnemies(500, Game::enemiesSpawn);
+	//Mix_PlayMusic(Game::bkgdMusic, -1); //make audio manager
+	Audio::playMusic(Game::bkgdMusic);
 	Game::loaded = true;
 	return true;
 }
@@ -152,7 +155,7 @@ bool Game::gameLogic() {
 		else if (localTexture == Player::dT) {
 			gun->m_direction = 'd';
 		}
-		if (gun->fire(screenSizeX / 2, screenSizeY / 2)) {
+		if (gun->fire(player->player->getPos()[0], player->player->getPos()[1])) {
 			hud->mammovalue--;
 			hud->updateAmmo();
 		}
@@ -206,7 +209,7 @@ bool Game::gameLogic() {
 		}
 		gun->setBulletDisplacement(-Player::playerSpeed,0);
 	}
-	/*/if (player->w || player->a || player->s || player->d) {
+	/*if (player->w || player->a || player->s || player->d) {
 		system("cls");
 		std::cout << "(" << player->x << "," << player->y << ")\n";
 	}*/

@@ -8,7 +8,7 @@ SDL_Texture* Gun::dT = nullptr;
 Mix_Chunk* Gun::shootsound = nullptr;
 Mix_Chunk* Gun::reloadsound = nullptr;
 
-Gun::Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown,std::string texturePath):
+Gun::Gun(std::string name, int reserveAmmo, int magSize, int bulletWidth, int bulletHeight, int bulletVelocity, Uint32 coolDown):
 	m_name(name),m_lastShot(NULL), m_coolDown(coolDown),m_reserveAmmo(reserveAmmo), m_magSize(magSize), m_magAmmo(magSize), m_bulletWidth(bulletWidth), m_bulletHeight(bulletHeight), m_direction('w'), m_bulletVelocity(bulletVelocity)
 {
 }

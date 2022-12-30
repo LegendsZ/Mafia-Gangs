@@ -1,4 +1,5 @@
 #pragma once
+#include "Rect.h"
 
 struct Divided {
 public:
@@ -7,10 +8,11 @@ public:
 
 class CollisionMap {
 public:
+	static SDL_Surface* collisionImage;
 	static Divided* map;
 	static unsigned int screenSizeX;
 	static unsigned int screenSizeY;
-	static bool makeMap(int w, int h);
+	static bool makeMap(int w, int h, int magX, int magY);
 	static bool checkCollision(int w, int h, int x, int y);
 	static bool helper(Divided div, char offset);
 private:

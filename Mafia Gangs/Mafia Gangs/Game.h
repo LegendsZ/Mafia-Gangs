@@ -20,9 +20,9 @@ public:
 	static unsigned int mouseX, mouseY;
 	//static Rect* bkgdGame;
 	static Rect* bkgdsGame[];
-	static float magnification;
-	static float magnificationX;
-	static float magnificationY;
+	static int magnification;
+	static int magnificationX;
+	static int magnificationY;
 	static Player* player;
 	static std::vector<Enemy*> enemies;
 	static unsigned int enemiesSpawn;
