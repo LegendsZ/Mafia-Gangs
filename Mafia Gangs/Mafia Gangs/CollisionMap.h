@@ -10,6 +10,7 @@ class CollisionMap {
 public:
 	static SDL_Surface* collisionImage;
 	static Divided* map;
+	static bool** basicMap;
 	static unsigned int screenSizeX;
 	static unsigned int screenSizeY;
 	static bool makeMap(int w, int h, int magX, int magY);

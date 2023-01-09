@@ -4,7 +4,7 @@ unsigned int GameManager::framesCap=60;
 unsigned int GameManager::framesCount=0;
 Uint32 GameManager::iStart;
 Uint32 GameManager::lastFrame;
-unsigned int GameManager::screenSizeX = 626, GameManager::screenSizeY = 626; //1250 x 750
+unsigned int GameManager::screenSizeX = 1920, GameManager::screenSizeY = 1080; //1250 x 750
 
 bool GameManager::Initialize()
 {
@@ -27,11 +27,12 @@ bool GameManager::Initialize()
 	Gun::aT = Rect::getTexture("res/bulleta.png");
 	Gun::sT = Rect::getTexture("res/bullets.png");
 	Gun::dT = Rect::getTexture("res/bulletd.png");
-	CollisionMap::collisionImage = IMG_Load("res/collision.bmp");
+	CollisionMap::collisionImage = IMG_Load("res/collisionFS.bmp");
 	HUD::outside = Rect::getTexture("res/outline.png");
 	Gun::shootsound = Mix_LoadWAV("res/m1911shoot.mp3");
 	Gun::reloadsound = Mix_LoadWAV("res/m1911reload.mp3");
-	Game::bkgd = Rect::getTexture("res/bkgdGame.jpg");
+	Game::bkgd = Rect::getTexture("res/bkgdGameFS.jpg"); //res/bkgdGame.jpg
+	//Game::bkgd = Rect::getTexture("res/collisionFS.bmp"); //res/bkgdGame.jpg
 	Game::bkgdMusic = Mix_LoadMUS("res/zombies.mp3");
 
 	Menu::Initialize(true, screenSizeX, screenSizeY);
@@ -76,9 +77,9 @@ void GameManager::Run()
 			SDL_Delay(toDelay);
 		}
 		if ((SDL_GetTicks() - lastFrame) / 1000.0 >= 1) {
-			system("cls");
-			std::cout << "Initializing...OK!\n";
-			std::cout << "FPS: " << framesCount;
+			//system("cls");
+			//std::cout << "Initializing...OK!\n";
+			//std::cout << "FPS: " << framesCount;
 			if (Game::hud) {
 				Game::hud->updateFPSCounter(--framesCount);
 			}

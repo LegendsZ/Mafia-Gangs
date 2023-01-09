@@ -19,8 +19,8 @@ public:
 	unsigned int mammovalue;
 	unsigned int rammovalue;
 	unsigned int hvalue;
-	unsigned int svalue;
-	HUD(int w, int h, int x, int y, unsigned int hvalue, unsigned int svalue, std::string gunName,unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue);
+	float svalue;
+	HUD(int w, int h, int x, int y, unsigned int hvalue, float svalue, std::string gunName,unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue);
 	void updateHealth();
 	void updateStamina();
 	void updateAmmo();

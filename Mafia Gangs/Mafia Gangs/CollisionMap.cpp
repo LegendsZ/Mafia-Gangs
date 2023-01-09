@@ -2,6 +2,7 @@
 
 SDL_Surface* CollisionMap::collisionImage = nullptr;
 Divided* CollisionMap::map = nullptr;
+bool** CollisionMap::basicMap = nullptr;
 unsigned int CollisionMap::screenSizeX;
 unsigned int CollisionMap::screenSizeY;
 
@@ -17,6 +18,32 @@ bool CollisionMap::makeMap(int w, int h, int magX, int magY) //seems oudated - n
 	}*/
 	CollisionMap::screenSizeX = w;
 	CollisionMap::screenSizeY = h;
+
+
+	//below is code for basic map bool** map system
+	int x = w * magX;
+	int y = h * magY;
+	Uint8 r;
+	Uint8 g;
+	Uint8 b;
+	Uint8 a;
+	Uint32 pixel;
+	int pitchdiv = collisionImage->pitch / 4;
+	basicMap = new bool* [y];
+	for (int i = 0; i < y; i++) {
+		basicMap[i] = new bool[x];
+		for (int j = 0; j < x; j++) {
+			pixel = ((Uint32*)(collisionImage->pixels))[i * pitchdiv + (j)];
+			SDL_GetRGB(pixel, collisionImage->format, &r, &g, &b);
+			basicMap[i][j] = r == 0 && g == 0 && b == 0 ? 1 : 0;
+		}
+	}
+	//above is is code for basic map bool** map system
+	
+
+
+	//Below is code for divided bitfield system for map
+	/*
 	int size = w * h / 8;
 	map = new Divided[size];
 	int sizetemp = collisionImage->w * collisionImage->h / 8;
@@ -90,15 +117,44 @@ bool CollisionMap::makeMap(int w, int h, int magX, int magY) //seems oudated - n
 			}
 		}
 	}
-	
-
 	delete[] maptemp;
 	return true;
+	*/
+	//Above is code for divided bitfield map system
 }
 
 bool CollisionMap::checkCollision(int w, int h, int x, int y) //instead of checking all 4 coords, maybe only check the one that is possible (by movement)
 {
-	//old collider;
+	//below is newer collider using basic map
+	if (x >= (int)CollisionMap::screenSizeX) {
+		x = (x % (int)CollisionMap::screenSizeX); //times magnification?
+	}
+	if (y >= (int)CollisionMap::screenSizeY) {
+		y = (y % (int)CollisionMap::screenSizeY);
+	}
+	if (x < 0) {
+		while (x < 0) {
+			x += (int)CollisionMap::screenSizeX;
+		}
+	}
+	if (y < 0) {
+		while (y < 0) {
+			y += (int)CollisionMap::screenSizeY;
+		}
+	}
+	int blval = y + h;
+	if (blval >= (int)CollisionMap::screenSizeY) {
+		blval = blval - (int)CollisionMap::screenSizeY;
+	}
+	int trval = x + w;
+	if (trval >= (int)CollisionMap::screenSizeX) {
+		trval = trval - (int)CollisionMap::screenSizeX;
+	}
+	return basicMap[y][x] || basicMap[y][trval] || basicMap[blval][x] || basicMap[blval][trval];
+	//above is newer collider using basic map
+
+	//old collider using actual image;
+	/*
 	if (x >= (int)CollisionMap::screenSizeX) {
 		x = (x % (int)CollisionMap::screenSizeX); //times magnification?
 	}
@@ -127,23 +183,27 @@ bool CollisionMap::checkCollision(int w, int h, int x, int y) //instead of check
 	Uint8 r;
 	Uint8 g;
 	Uint8 b;
-	SDL_GetRGB(tl , collisionImage->format, &r, &g, &b);
+	Uint8 a;
+	SDL_GetRGBA(tl , collisionImage->format, &r, &g, &b,&a);
 	if (r == 0 && g==0 && b==0) {
 		return false;
 	}
-	SDL_GetRGB(tr, collisionImage->format, &r, &g, &b);
+	SDL_GetRGBA(tr, collisionImage->format, &r, &g, &b, &a);
 	if (r == 0 && g == 0 && b == 0) {
 		return false;
 	}
-	SDL_GetRGB(bl, collisionImage->format, &r, &g, &b);
+	SDL_GetRGBA(bl, collisionImage->format, &r, &g, &b, &a);
 	if (r == 0 && g == 0 && b == 0) {
 		return false;
 	}
-	SDL_GetRGB(br, collisionImage->format, &r, &g, &b);
+	SDL_GetRGBA(br, collisionImage->format, &r, &g, &b, &a);
 	if (r == 0 && g == 0 && b == 0) {
 		return false;
 	}
 	return true;
+	*/
+	//above is old collider using actual image
+	
 
 	//new collider
 	/*if (x >= (int)CollisionMap::screenSizeX) {

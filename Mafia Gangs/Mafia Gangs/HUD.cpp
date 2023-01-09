@@ -4,7 +4,7 @@
 
 SDL_Texture* HUD::outside = nullptr;
 
-HUD::HUD(int w, int h, int x, int y, unsigned int hvalue, unsigned int svalue, std::string gunName, unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue) :
+HUD::HUD(int w, int h, int x, int y, unsigned int hvalue, float svalue, std::string gunName, unsigned int mammovalue, unsigned int rammovalue, unsigned int elvalue, unsigned int scorevalue) :
 	hvalue(hvalue), svalue(svalue), gunName(gunName), mammovalue(mammovalue), rammovalue(rammovalue), elvalue(elvalue), scorevalue(scorevalue)
 {
 	houtside = new Rect(w, h, x, y, 0,0,0,255);

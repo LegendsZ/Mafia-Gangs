@@ -2,7 +2,7 @@
 
 //bool Menu::enabled;
 int Game::screenSizeX, Game::screenSizeY;
-int Game::DEFAULTSCREENX = 626, Game::DEFAULTSCREENY = 626; //1250x 750y
+int Game::DEFAULTSCREENX = 1920, Game::DEFAULTSCREENY = 1080; //1250x 750y
 unsigned int Game::mouseX, Game::mouseY;
 int Game::magnification = 1;
 int Game::magnificationX = Game::magnification;
@@ -56,19 +56,19 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	}
 	Game::player = new Player();
 	player->x = screenSizeX* Game::magnificationX / 2;
-	player->y = screenSizeY* Game::magnificationY / 2+50;
-	player->player = new Rect(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2, screenSizeY / 2 + 50, 255, 0, 0, 255);
+	player->y = screenSizeY* Game::magnificationY / 2+100;
+	player->player = new Rect(20 * Game::magnificationX, 20 * Game::magnificationY, screenSizeX / 2 , screenSizeY / 2 + 100, 255, 0, 0, 255);
 
 
-	gun = new Gun("M1911",32, 8, 10 * Game::magnificationX,10 * Game::magnificationY,15,300);
+	gun = new Gun("M1911",32, 8, 20 * Game::magnificationX,20 * Game::magnificationY,30,300);
 
 	hud = new HUD(100, 50, 0, screenSizeY - 50,100,100,gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn, 0);
-	//CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY,Game::magnificationX, Game::magnificationY);
-	CollisionMap::screenSizeX = screenSizeX * Game::magnificationX;
-	CollisionMap::screenSizeY = screenSizeY * Game::magnificationY;
+	CollisionMap::makeMap(screenSizeX * Game::magnificationX, screenSizeY * Game::magnificationY,Game::magnificationX, Game::magnificationY);
+	//CollisionMap::screenSizeX = screenSizeX * Game::magnificationX;
+	//CollisionMap::screenSizeY = screenSizeY * Game::magnificationY;
 
 	player->player->m_Texture = Player::wT;
-	//spawnEnemies(500, Game::enemiesSpawn);
+	spawnEnemies(500, Game::enemiesSpawn);
 	//Mix_PlayMusic(Game::bkgdMusic, -1); //make audio manager
 	Audio::playMusic(Game::bkgdMusic);
 	Game::loaded = true;
@@ -78,7 +78,7 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 bool Game::spawnEnemies(int range,int count)
 {
 	for (int i = 0; i < count; i++) {
-		enemies.push_back(new Enemy(10 * Game::magnificationX, 10 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed, Player::basePlayerSpeed, 3));
+		enemies.push_back(new Enemy(20 * Game::magnificationX, 20 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed, Player::basePlayerSpeed, 3));
 	}
 	return true;
 }
@@ -122,7 +122,7 @@ bool Game::draw() {
 }
 bool Game::gameLogic() {
 	for (int i = 0; i < enemies.size(); i++) {
-		int ret = enemies[i]->gameLogic(screenSizeX / 2, screenSizeY / 2, gun->m_bullets, gun);
+		int ret = enemies[i]->gameLogic(player->player->getPos()[0], player->player->getPos()[1], gun->m_bullets, gun);
 		if (ret == -1) {
 			hud->hvalue--;
 			hud->updateHealth();
@@ -162,14 +162,14 @@ bool Game::gameLogic() {
 	}
 	gun->moveBullets();
 	if (hud->svalue != 100 && SDL_GetTicks() - player->shiftLetGo > 3000) {
-		hud->svalue++;
+		hud->svalue+=0.5;
 		hud->updateStamina();
 	}
 	if (player->run && hud->svalue != 0) {
 		player->shiftLetGo = SDL_GetTicks();
 		player->playerSpeed = player->runSpeed;
 	}
-	if (player->w && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y - Player::playerSpeed)) {
+	if (player->w && !CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y - Player::playerSpeed)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(0, Player::playerSpeed);
 		}
@@ -179,7 +179,7 @@ bool Game::gameLogic() {
 		}
 		gun->setBulletDisplacement(0, Player::playerSpeed);
 	}
-	if (player->a && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x - Player::playerSpeed, player->y)) {
+	if (player->a && !CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x - Player::playerSpeed, player->y)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(Player::playerSpeed,0);
 		}
@@ -189,7 +189,7 @@ bool Game::gameLogic() {
 		}
 		gun->setBulletDisplacement(Player::playerSpeed,0);
 	}
-	if (player->s && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y + Player::playerSpeed)) {
+	if (player->s && !CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x, player->y + Player::playerSpeed)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(0, -Player::playerSpeed);
 		}
@@ -199,7 +199,7 @@ bool Game::gameLogic() {
 		}
 		gun->setBulletDisplacement(0, -Player::playerSpeed);
 	}
-	if (player->d && CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x + Player::playerSpeed, player->y)) {
+	if (player->d && !CollisionMap::checkCollision(player->player->m_Width, player->player->m_Height, player->x + Player::playerSpeed, player->y)) {
 		for (int i = 0; i < 9; i++) {
 			bkgdsGame[i]->setDisplacement(-Player::playerSpeed,0);
 		}
@@ -214,7 +214,7 @@ bool Game::gameLogic() {
 		std::cout << "(" << player->x << "," << player->y << ")\n";
 	}*/
 	if (player->run && hud->svalue > 0 && (player->w || player->a || player->s || player->d)) {
-		hud->svalue--;
+		hud->svalue-=0.5;
 		hud->updateStamina();
 	}
 	if (hud->svalue == 0) {
