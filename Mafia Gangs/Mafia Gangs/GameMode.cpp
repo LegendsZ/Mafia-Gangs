@@ -51,6 +51,23 @@ bool GameMode::Initialize(bool enabled, unsigned int screenSizeX, unsigned int s
 void GameMode::btnClassicClickEvent(SDL_Event& event)
 {
 	//W.I.P
+	if (event.type == SDL_MOUSEBUTTONUP) {
+		if (mouseX >= btnClassic->getPos()[0] && mouseX <= btnClassic->getPos()[0] + btnClassic->m_Rect->m_Width && mouseY >= btnClassic->getPos()[1] && mouseY <= btnClassic->getPos()[1] + btnClassic->m_Rect->m_Height) {
+			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs");
+			visibilities::gameModeVisibility = false;
+			Game::zombies = false;
+			if (!Game::loaded) {
+				visibilities::loadingVisibility = true;
+				Loading::loader = GameMode::gameLoader;
+				GameMode::gameLoader();
+				//SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
+			}
+			else {
+				visibilities::gameVisibility = true;
+			}
+			Audio::resumeMusic();
+		}
+	}
 }
 
 void GameMode::btnZombiesClickEvent(SDL_Event& event)
@@ -59,17 +76,12 @@ void GameMode::btnZombiesClickEvent(SDL_Event& event)
 		if (mouseX >= btnZombies->getPos()[0] && mouseX <= btnZombies->getPos()[0] + btnZombies->m_Rect->m_Width && mouseY >= btnZombies->getPos()[1] && mouseY <= btnZombies->getPos()[1] + btnZombies->m_Rect->m_Height) {
 			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs");
 			visibilities::gameModeVisibility = false;
+			Game::zombies = true;
 			if (!Game::loaded) {
-
-				//load zombie texture
-				Enemy::wT = Rect::getTexture("res/zombiew.png");
-				Enemy::aT = Rect::getTexture("res/zombiea.png");
-				Enemy::sT = Rect::getTexture("res/zombies.png");
-				Enemy::dT = Rect::getTexture("res/zombied.png");
-
 				visibilities::loadingVisibility = true;
 				Loading::loader = GameMode::gameLoader;
-				SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
+				GameMode::gameLoader();
+				//SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
 			}
 			else {
 				visibilities::gameVisibility = true;

@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Text.h"
 
 SDL_Renderer* Window::renderer = nullptr;
 
@@ -128,6 +129,9 @@ bool Window::init() {
 	}
 
 	renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
+
+	new Text(Window::renderer, "res/comic.ttf", 35, "Enemies Left: ", { 0,255,0,255 });
+
 
 	if (renderer == nullptr) {
 		std::cerr << "\nFailed to create renderer!\n";

@@ -1,6 +1,8 @@
 #include "Rect.h"
 #include <SDL_image.h>
 
+bool Rect::delTexture = true;
+
 Rect::Rect(int w, int h, int x, int y, int r, int g, int b, int a) :
 	m_Width(w), m_Height(h), m_R(r), m_G(g), m_B(b), m_A(a)
 {
@@ -18,7 +20,9 @@ Rect::Rect(int w, int h, int x, int y, const std::string& img_path) :
 
 Rect::~Rect()
 {
-	SDL_DestroyTexture(m_Texture);
+	if (delTexture) {
+		SDL_DestroyTexture(m_Texture);
+	}
 }
 
 void Rect::draw() const

@@ -6,7 +6,7 @@ public:
 	Rect(int w, int h, int x, int y, int r, int g, int b, int a);
 	Rect(int w, int h, int x, int y, const std::string& img_path);
 	~Rect();
-
+	static bool delTexture;
 	void draw()const;
 
 	bool pollEvents();

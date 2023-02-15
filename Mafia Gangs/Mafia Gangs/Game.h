@@ -8,7 +8,6 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Gun.h"
-#include "CollisionMap.h"
 #include <vector>
 
 
@@ -28,6 +27,7 @@ public:
 	static unsigned int enemiesSpawn;
 	static HUD* hud;
 	static bool loaded;
+	static bool zombies;
 	static bool gameLogic();
 	static bool Initialize(bool enabled, int screenSizeX, int screenSizeY);
 	static bool spawnEnemies(int range,int count);
