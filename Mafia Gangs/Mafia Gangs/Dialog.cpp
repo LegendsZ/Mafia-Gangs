@@ -5,6 +5,11 @@ Rect* Dialog::bkgdDialog=nullptr;
 Text* Dialog::text=nullptr;
 Button* Dialog::btnOk = nullptr;
 unsigned int Dialog::mouseX, Dialog::mouseY;
+void(*Dialog::clickEvent)();
+
+Dialog::Dialog(){
+
+}
 
 bool Dialog::draw()
 {
@@ -21,10 +26,10 @@ bool Dialog::pollEvents(SDL_Event& event)
 	return true;
 }
 
-void Dialog::btnOkClickEvent(SDL_Event& event) {
+void Dialog::btnOkClickHandler(SDL_Event& event) {
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		if (mouseX >= btnOk->getPos()[0] && mouseX <= btnOk->getPos()[0] + btnOk->m_Rect->m_Width && mouseY >= btnOk->getPos()[1] && mouseY <= btnOk->getPos()[1] + btnOk->m_Rect->m_Height) {
-
+			clickEvent();
 		}
 	}
 }

@@ -14,6 +14,7 @@ HUD* Game::hud = nullptr;
 bool Game::loaded = false;
 bool Game::zombies = false;
 Player* Game::player;
+Gun* Game::gun = nullptr;
 
 int Player::x;
 int Player::y;
@@ -38,8 +39,7 @@ SDL_Texture* Game::bkgd = nullptr;
 Mix_Music* Game::bkgdMusic = nullptr;
 
 std::vector<Enemy*> Game::enemies;
-unsigned int Game::enemiesSpawn = 30;
-Gun* gun;
+unsigned int Game::enemiesSpawn = 10;
 
 bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	visibilities::gameVisibility = enabled;
@@ -67,8 +67,8 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	if (zombies) {
 		gun = new Gun("M1911", 32, 8, 20 * Game::magnificationX, 20 * Game::magnificationY, 30, 300);
 		hud = new HUD(100, 50, 0, screenSizeY - 50, 100, 100, gun->m_name, gun->m_magAmmo, gun->m_reserveAmmo, Game::enemiesSpawn, 0);
-		//spawnEnemies(500, Game::enemiesSpawn);
-		spawnEnemies(500, 1);
+		spawnEnemies(500, Game::enemiesSpawn);
+		//spawnEnemies(500, 1);
 		Mix_PlayMusic(Game::bkgdMusic, -1); //make audio manager
 		Audio::playMusic(Game::bkgdMusic);
 	}
@@ -79,10 +79,29 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	return true;
 }
 
+bool Game::saveClose()
+{
+	Rect::delTexture = false;
+	for (int i = 0; i < 9; i++) {
+		delete bkgdsGame[i];
+	}
+	Rect::delTexture = true;
+	for (int i = 0; i < enemies.size(); i++) {
+		delete enemies[i];
+	}
+	enemies.clear();
+	delete hud;
+	delete dialog;
+	delete gun;
+
+	Game::loaded = false;
+	return true;
+}
+
 bool Game::spawnEnemies(int range,int count)
 {
 	for (int i = 0; i < count; i++) {
-		enemies.push_back(new Enemy(20 * Game::magnificationX, 20 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed, Player::basePlayerSpeed,Player::basePlayerSpeed/4, 3));
+		enemies.push_back(new Enemy(20 * Game::magnificationX, 20 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed*0.75, Player::basePlayerSpeed*0.6,Player::basePlayerSpeed/4, 3));
 	}
 	return true;
 }
@@ -97,9 +116,13 @@ bool Game::Reset()
 	//int offsetx = player->x - (screenSizeX * Game::magnificationX / 2);
 	//int offsety = player->y - (screenSizeY * Game::magnificationY / 2);
 	int range = 500;
+	int playerOffsetX = player->x - (screenSizeX * Game::magnificationX / 2);
+	int playerOffsetY = player->y - (screenSizeY * Game::magnificationY / 2 + 100);
 	for (int i = 0; i < enemies.size(); i++) {
 		//delete enemies[i];
-		enemies[i] = new Enemy(20 * Game::magnificationX, 20 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed, Player::basePlayerSpeed, Player::basePlayerSpeed/4, 3);
+		enemies[i] = new Enemy(20 * Game::magnificationX, 20 * Game::magnificationY, screenSizeX / 2 + (i * (rand() % range)), screenSizeY / 2 + (i * (rand() % range)), Player::runSpeed * 0.75, Player::basePlayerSpeed * 0.6, Player::basePlayerSpeed / 4, 3);
+		enemies[i]->x += playerOffsetX;
+		enemies[i]->y += playerOffsetY;
 	}
 	
 	hud->hvalue = 100;
@@ -118,7 +141,7 @@ bool Game::draw() {
 		gun->drawEffects(screenSizeX, screenSizeY);
 	}
 	for (int i = 0; i < enemies.size(); i++) {
-		if (Game::enemies[i]->x < screenSizeX && Game::enemies[i]->x >= -Game::enemies[i]->enemy->m_Width && Game::enemies[i]->y < screenSizeY && Game::enemies[i]->y >= -Game::enemies[i]->enemy->m_Height) {
+		if (Game::enemies[i]->enemy->m_Pos[0] < screenSizeX && Game::enemies[i]->enemy->m_Pos[0] >= -Game::enemies[i]->enemy->m_Width && Game::enemies[i]->enemy->m_Pos[1] < screenSizeY && Game::enemies[i]->enemy->m_Pos[1] >= -Game::enemies[i]->enemy->m_Height) {
 			Game::enemies[i]->enemy->draw();
 		}
 	}
@@ -131,8 +154,8 @@ bool Game::draw() {
 }
 bool Game::gameLogic() {
 	for (int i = 0; i < enemies.size(); i++) {
-		int ret = enemies[i]->gameLogic(player->player->getPos()[0], player->player->getPos()[1], gun->m_bullets, gun);
-		//int ret = enemies[i]->gameLogic(player->x, player->y, gun->m_bullets, gun);
+		//int ret = enemies[i]->gameLogic(player->player->getPos()[0], player->player->getPos()[1], gun->m_bullets, gun);
+		int ret = enemies[i]->gameLogic(player->x, player->y, gun->m_bullets, gun);
 		if (ret == -1) {
 			hud->hvalue--;
 			hud->updateHealth();
@@ -151,8 +174,10 @@ bool Game::gameLogic() {
 			hud->updateScore();
 		}
 	}
-	gun->checkCollision();
-	gun->handleEffects();
+	if (gun) {
+		gun->checkCollision();
+		gun->handleEffects();
+	}
 	if (player->firing) {
 		SDL_Texture* localTexture = player->player->m_Texture;
 		if (localTexture == Player::wT) {
@@ -175,7 +200,7 @@ bool Game::gameLogic() {
 	if (gun) {
 		gun->moveBullets();
 	}
-	if (hud->svalue != 100 && SDL_GetTicks() - player->shiftLetGo > 3000) {
+	if (hud->svalue != 100 && SDL_GetTicks() - player->shiftLetGo >= 2000) {
 		hud->svalue+=0.5;
 		hud->updateStamina();
 	}

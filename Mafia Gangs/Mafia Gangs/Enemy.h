@@ -1,12 +1,12 @@
 #pragma once
 #include <vector>
-#include "Rect.h"
+#include "FRect.h"
 #include "Bullet.h"
 #include "Gun.h"
 
 struct Enemy {
 public:
-	Rect* enemy;
+	FRect* enemy;
 	float x;
 	float y;
 	float enemySpeed;

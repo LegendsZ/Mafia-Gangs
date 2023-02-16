@@ -55,16 +55,13 @@ void GameMode::btnClassicClickEvent(SDL_Event& event)
 		if (mouseX >= btnClassic->getPos()[0] && mouseX <= btnClassic->getPos()[0] + btnClassic->m_Rect->m_Width && mouseY >= btnClassic->getPos()[1] && mouseY <= btnClassic->getPos()[1] + btnClassic->m_Rect->m_Height) {
 			SDL_SetWindowTitle(((Window*)visibilities::windowPTRVOID)->m_Window, "Mafia Gangs");
 			visibilities::gameModeVisibility = false;
+			if (Game::loaded) {
+				Game::saveClose();
+			}
 			Game::zombies = false;
-			if (!Game::loaded) {
-				visibilities::loadingVisibility = true;
-				Loading::loader = GameMode::gameLoader;
-				GameMode::gameLoader();
-				//SDL_CreateThread(SDL_ThreadFunction(Loading::loader), "game", nullptr);
-			}
-			else {
-				visibilities::gameVisibility = true;
-			}
+			visibilities::loadingVisibility = true;
+			Loading::loader = GameMode::gameLoader;
+			GameMode::gameLoader();
 			Audio::resumeMusic();
 		}
 	}

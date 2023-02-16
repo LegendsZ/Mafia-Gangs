@@ -7,14 +7,14 @@ SDL_Texture* Enemy::dT=nullptr;
 Enemy::Enemy(int w, int h, int x, int y, float runSpeed, float baseEnemySpeed,float activitySpeed, float reach) :
 	x(x), y(y), enemySpeed(baseEnemySpeed), baseEnemySpeed(baseEnemySpeed),runSpeed(runSpeed), run(false), reach(reach), activitySpeed(activitySpeed)
 {
-	enemy = new Rect(w, h, x, y, 0, 0, 255, 255);
+	enemy = new FRect(w, h, x, y, 0, 0, 255, 255);
 	enemy->m_Texture = wT;
 }
 
 bool Enemy::setDisplacement(int x, int y)
 {
-	this->x+= x;
-	this->y += y;
+	//this->x+= x;
+	//this->y += y;
 	enemy->setDisplacement(x, y);
 	return true;
 }
@@ -22,13 +22,15 @@ bool Enemy::setDisplacement(int x, int y)
 int Enemy::gameLogic(int pX, int pY, std::vector<Bullet*> bullets, Gun* gun)
 {
 	if (CollisionMap::checkCollision(enemy->m_Width, enemy->m_Height, x, y)) {
-		//enemySpeed = activitySpeed;
+		enemySpeed = activitySpeed;
 	}
 	else {
 		enemySpeed = baseEnemySpeed;
 	}
 	for (int i = 0; i < bullets.size(); i++) {
-		if (abs(x - bullets[i]->m_bullet->getPos()[0]) <= gun->m_bulletVelocity && abs(y - bullets[i]->m_bullet->getPos()[1]) <= gun->m_bulletVelocity) {
+		int xl = bullets[i]->x; ;// bullets[i]->m_bullet->getPos()[0];
+		int yl = bullets[i]->y; //bullets[i]->m_bullet->getPos()[1];
+		if (abs(x - xl) <= gun->m_bulletVelocity && abs(y - yl) <= gun->m_bulletVelocity) {
 			return i;
 		}
 	}
@@ -37,37 +39,37 @@ int Enemy::gameLogic(int pX, int pY, std::vector<Bullet*> bullets, Gun* gun)
 		return -1;
 	}
 
-	if (pX - x < 0) {
+	if (pX - (int)x < reach) {
 		x-=enemySpeed;
-		//enemy->setDisplacement(-enemySpeed, 0); //commenting these out seems to revert.
-		if ((int)x == x) {
+		enemy->setDisplacement(-enemySpeed, 0); //commenting these out seems to revert.
+		/*if ((int)x == x) {
 			enemy->m_Pos[0] = x;
-		}
+		}*/
 		enemy->m_Texture = Enemy::aT;
 	}
-	else if (pX - x > 0) {
+	else if (pX - (int)x > reach) {
 		x+=enemySpeed;
-		//enemy->setDisplacement(enemySpeed, 0);
-		if ((int)x == x) {
+		enemy->setDisplacement(enemySpeed, 0);
+		/*if ((int)x == x) {
 			enemy->m_Pos[0] = x;
-		}
+		}*/
 		enemy->m_Texture = Enemy::dT;
 	}
 
-	if (pY - y < 0) {
+	if (pY - (int)y < reach) {
 		y-=enemySpeed;
-		//enemy->setDisplacement(0, -enemySpeed);
-		if ((int)y == y) {
+		enemy->setDisplacement(0, -enemySpeed);
+		/*if ((int)y == y) {
 			enemy->m_Pos[1] = y;
-		}
+		}*/
 		enemy->m_Texture = Enemy::wT;
 	}
-	else if (pY - y > 0) {
+	else if (pY - (int)y > reach) {
 		y+=enemySpeed;
-		//enemy->setDisplacement(0, enemySpeed);
-		if ((int)y == y) {
+		enemy->setDisplacement(0, enemySpeed);
+		/*if ((int)y == y) {
 			enemy->m_Pos[1] = y;
-		}
+		}*/
 		enemy->m_Texture = Enemy::sT;
 	}
 	return -2;

@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Gun.h"
+#include "MissionManager.h"
 #include <vector>
 
 
@@ -23,6 +24,7 @@ public:
 	static int magnificationX;
 	static int magnificationY;
 	static Player* player;
+	static Gun* gun;
 	static std::vector<Enemy*> enemies;
 	static unsigned int enemiesSpawn;
 	static HUD* hud;
@@ -30,6 +32,7 @@ public:
 	static bool zombies;
 	static bool gameLogic();
 	static bool Initialize(bool enabled, int screenSizeX, int screenSizeY);
+	static bool saveClose();
 	static bool spawnEnemies(int range,int count);
 	static bool Reset();
 	static bool pollEvents();
