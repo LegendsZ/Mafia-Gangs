@@ -12,7 +12,6 @@
 #include <vector>
 
 
-
 class Game {
 public:
 	static int DEFAULTSCREENX, DEFAULTSCREENY;

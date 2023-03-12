@@ -1,7 +1,7 @@
 #include "MissionManager.h"
 
 bool MissionManager::loaded = false;
-std::string MissionManager::saveFilePath = "";
+std::string MissionManager::saveFilePath = "data.txt";
 int MissionManager::currentMissionIndex = 0;
 std::vector<MissionBase*> MissionManager::missions;
 

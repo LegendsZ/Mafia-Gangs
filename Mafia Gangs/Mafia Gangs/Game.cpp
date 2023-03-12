@@ -40,6 +40,7 @@ Mix_Music* Game::bkgdMusic = nullptr;
 
 std::vector<Enemy*> Game::enemies;
 unsigned int Game::enemiesSpawn = 10;
+MissionManager* missionManager = nullptr;
 
 bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	visibilities::gameVisibility = enabled;
@@ -74,6 +75,8 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 	}
 	else {
 		hud = new HUD(100, 50, 0, screenSizeY - 50, 100, 100,0);
+		missionManager = new MissionManager();
+		missionManager->loadMissionData();
 	}
 	Game::loaded = true;
 	return true;
@@ -276,25 +279,21 @@ bool Game::gameLogic() {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(-screenSizeX * Game::magnificationX, 0);
 		}
-		player->x += screenSizeX * Game::magnificationX;
+		//player->x += screenSizeX * Game::magnificationX;
 	}else if (bkgdsGame[4]->m_Pos[0] <= -screenSizeX * Game::magnificationX) {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(screenSizeX * Game::magnificationX, 0);
 		}
-		player->x -= screenSizeX * Game::magnificationX;
 	} else if (bkgdsGame[4]->m_Pos[1] >= screenSizeY * Game::magnificationY) {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(0,-screenSizeY * Game::magnificationY);
 		}
-		player->y += screenSizeY * Game::magnificationY;
 	}
 	else if (bkgdsGame[4]->m_Pos[1] <= -screenSizeY * Game::magnificationY) {
 		for (int i = 0; i < 9; i++) {
 			Game::bkgdsGame[i]->setDisplacement(0, screenSizeY * Game::magnificationY);
 		}
-		player->y -= screenSizeY * Game::magnificationY;
 	}
-
 	return true;
 }
 bool Game::pollEvents()

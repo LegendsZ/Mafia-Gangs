@@ -1,4 +1,5 @@
 #pragma once
+#include "Dialog.h"
 
 class MissionBase {
 public:
