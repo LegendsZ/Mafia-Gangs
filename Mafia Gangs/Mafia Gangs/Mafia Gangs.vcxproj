@@ -151,6 +151,7 @@
     <ClCompile Include="CollisionMap.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FRect.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMode.cpp" />
@@ -158,6 +159,9 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Loading.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MissionBase.cpp" />
+    <ClCompile Include="MissionManager.cpp" />
+    <ClCompile Include="MissionOne.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="screenVisibility.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -172,6 +176,7 @@
     <ClInclude Include="CollisionMap.h" />
     <ClInclude Include="Dialog.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FRect.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMode.h" />
@@ -179,6 +184,9 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Loading.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MissionBase.h" />
+    <ClInclude Include="MissionManager.h" />
+    <ClInclude Include="MissionOne.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="ScreenVisibility.h" />
     <ClInclude Include="Settings.h" />

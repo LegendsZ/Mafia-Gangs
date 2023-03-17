@@ -77,6 +77,7 @@ bool Game::Initialize(bool enabled, int screenSizeX, int screenSizeY) {
 		hud = new HUD(100, 50, 0, screenSizeY - 50, 100, 100,0);
 		missionManager = new MissionManager();
 		missionManager->loadMissionData();
+		missionManager->startOrContinue();
 	}
 	Game::loaded = true;
 	return true;

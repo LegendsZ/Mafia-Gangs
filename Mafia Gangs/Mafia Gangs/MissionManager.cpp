@@ -16,9 +16,9 @@ bool MissionManager::loadMissionData()
 	}
 	else {
 		//reading goes here
+		missions.push_back((MissionBase*)(new MissionOne()));
 		fileInput.close();
 	}
-
 	return true;
 }
 

@@ -3,8 +3,8 @@
 
 class MissionBase {
 public:
-	virtual bool startOrContinue();
-	virtual bool reset();
+	virtual bool startOrContinue()=0;
+	virtual bool reset()=0;
 	float completion;
 private:
 };

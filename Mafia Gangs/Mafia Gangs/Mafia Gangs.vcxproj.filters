@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Misc">
       <UniqueIdentifier>{76854aba-ed9c-4e39-8df5-ffb051773e11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Missions">
+      <UniqueIdentifier>{95d53406-38d8-4717-b8e7-08c20d773359}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Missions">
+      <UniqueIdentifier>{8d1b0c80-109c-4153-a6fb-399e7a64dee7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -90,6 +96,18 @@
     <ClCompile Include="GameMode.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="FRect.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionOne.cpp">
+      <Filter>Source Files\Missions</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionBase.cpp">
+      <Filter>Source Files\Missions</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionManager.cpp">
+      <Filter>Source Files\Missions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -122,9 +140,6 @@
     <ClInclude Include="Dialog.h">
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Header Files\Misc</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionMap.h">
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
@@ -145,6 +160,21 @@
     </ClInclude>
     <ClInclude Include="GameMode.h">
       <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="FRect.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MissionOne.h">
+      <Filter>Header Files\Missions</Filter>
+    </ClInclude>
+    <ClInclude Include="MissionBase.h">
+      <Filter>Header Files\Missions</Filter>
+    </ClInclude>
+    <ClInclude Include="MissionManager.h">
+      <Filter>Header Files\Missions</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files\Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

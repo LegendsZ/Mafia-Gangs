@@ -20,7 +20,6 @@ int MissionOne::mainLogic(void* nullData)
 				self->dialog->text = new Text(Window::renderer, "res/comic.ttf", 20, "Welcome to Mafia Gangs!", {0,0,255,255});
 				self->dialog->text->setPos(self->dialog->bkgdDialog->getPos()[0] + self->dialog->picture->getPos()[0], self->dialog->bkgdDialog->getPos()[1] + self->dialog->picture->getPos()[1]);
 			}
-
 		}
 		MissionOne::self->draw();
 	}
