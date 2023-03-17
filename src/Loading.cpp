@@ -4,7 +4,7 @@
 //bool Loading::enabled;
 unsigned int Loading::screenSizeX, Loading::screenSizeY;
 unsigned int Loading::mouseX, Loading::mouseY;
-void(*Loading::loader);
+void(*Loading::loader)();
 
 Rect* Loading::bkgdLoadingOne;
 Rect* Loading::bkgdLoadingTwo;

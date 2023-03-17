@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.24)
 project(Mafia-Gangs)
 set(CMAKE_CXX_STANDARD 20)
 
@@ -25,7 +25,7 @@ foreach(_OBJECT_ ${OBJECT_SOURCES})
 
 	# Declare a new object that should be built, link the SDL2 libraries
 	add_library(${_OBJECT_} OBJECT "${CMAKE_SOURCE_DIR}/src/${_OBJECT_}.cpp")
-	target_link_libraries(${_OBJECT_} ${SDL_LIBRARIES})
+	target_link_libraries(${_OBJECT_})
 
 	# Add the output object to `OBJECTS` list
 	list(APPEND _OBJECTS_ $<TARGET_OBJECTS:${_OBJECT_}>)
@@ -33,4 +33,4 @@ endforeach()
 
 # Compile the complete executable against all objects and SDL libraries/headers
 add_executable(MafiaGangs "${CMAKE_SOURCE_DIR}/src/Source.cpp")
-target_link_libraries(MafiaGangs ${_OBJECTS_} ${SDL_LIBRARIES})
+target_link_libraries(MafiaGangs SDL2::SDL2 SDL2_image::SDL2_image SDL2_mixer::SDL2_mixer SDL2_ttf::SDL2_ttf ${_OBJECTS_})
