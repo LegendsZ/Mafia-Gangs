@@ -12,8 +12,8 @@ public:
 	int m_bulletWidth;
 	int m_bulletHeight;
 	int m_bulletVelocity;
-	Uint32 m_coolDown;
-	Uint32 m_lastShot;
+	uint32_t m_coolDown;
+	uint32_t m_lastShot;
 
 	static SDL_Texture* wT;
 	static SDL_Texture* aT;

@@ -1,4 +1,7 @@
+#include <Rect.h>
+
 #pragma once
+
 struct Player {
 public:
 	static Rect* player;
@@ -9,7 +12,7 @@ public:
 	static float runSpeed;
 	static bool run;
 	static bool firing;
-	static Uint32 shiftLetGo;
+	static uint32_t shiftLetGo;
 	static bool w;
 	static bool a;
 	static bool s;
