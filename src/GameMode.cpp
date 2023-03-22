@@ -28,7 +28,7 @@ bool GameMode::Initialize(bool enabled, unsigned int screenSizeX, unsigned int s
 	GameMode::magnificationY = (GameMode::magnificationY / GameMode::DEFAULTSCREENY) * screenSizeY;
 
 	GameMode::title = new Rect(250 * GameMode::magnificationX, 125 * GameMode::magnificationY, 465 * GameMode::magnificationX, 25 * GameMode::magnificationY, "res/gamemodetitle.png");
-	GameMode::bkgdGameMode = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.jpg");
+	GameMode::bkgdGameMode = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.png");
 
 	GameMode::btnClassic = new Button(
 		175 * GameMode::magnificationX, 75 * GameMode::magnificationY,

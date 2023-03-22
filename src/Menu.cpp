@@ -25,7 +25,7 @@ bool Menu::Initialize(bool enabled, unsigned int screenSizeX, unsigned int scree
 	Menu::magnificationY = (Menu::magnificationY / Menu::DEFAULTSCREENY)* screenSizeY;
 
 
-	Menu::bkgdMenu = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.jpg");
+	Menu::bkgdMenu = new Rect(screenSizeX, screenSizeY, 0, 0, "res/bkgdMenu.png");
 	Menu::title= new Rect(250* Menu::magnificationX, 125* Menu::magnificationY, 465* Menu::magnificationX, 25* Menu::magnificationY, "res/menutitle.png");
 
 	Menu::btnPlay = new Button(

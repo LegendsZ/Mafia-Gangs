@@ -22,6 +22,7 @@ Button::Button(int w, int h, int x, int y, const std::string& img_path, void(*ha
 	m_Handler(handler)
 {
 	m_Rect = new Rect(w, h, x, y, img_path);
+	m_Text = nullptr;
 }
 
 Button::Button(Rect* rect, Text* text, void(*handler)(SDL_Event&)) : m_Rect(rect), m_Text(text), m_Handler(handler)

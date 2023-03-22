@@ -11,7 +11,7 @@ bool GameManager::Initialize()
 	system("title MAFIA GANG BOOT");
 	mainWindow = new Window("Mafia Gangs | Menu", screenSizeX, screenSizeY);
 	visibilities::windowPTRVOID = mainWindow;
-	mainWindow->setWindowIcon("res/icon.jpg");
+	mainWindow->setWindowIcon("res/icon.png");
 
 	srand(time(NULL));
 	//texture loading is here because it should happen in main thread.
