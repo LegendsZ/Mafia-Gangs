@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="Mafia-Gangs" targetName="CollisionMap" />
+      <config projectName="Mafia-Gangs" targetName="Settings" />
+      <config projectName="Mafia-Gangs" targetName="FRect" />
+      <config projectName="Mafia-Gangs" targetName="ScreenVisibility" />
+      <config projectName="Mafia-Gangs" targetName="Rect" />
+      <config projectName="Mafia-Gangs" targetName="Gun" />
+      <config projectName="Mafia-Gangs" targetName="Audio" />
+      <config projectName="Mafia-Gangs" targetName="Window" />
+      <config projectName="Mafia-Gangs" targetName="Enemy" />
+      <config projectName="Mafia-Gangs" targetName="Dialog" />
+      <config projectName="Mafia-Gangs" targetName="Bullet" />
+      <config projectName="Mafia-Gangs" targetName="Loading" />
+      <config projectName="Mafia-Gangs" targetName="Menu" />
+      <config projectName="Mafia-Gangs" targetName="HUD" />
+      <config projectName="Mafia-Gangs" targetName="GameMode" />
+      <config projectName="Mafia-Gangs" targetName="MafiaGangs" />
+      <config projectName="Mafia-Gangs" targetName="MissionManager" />
+      <config projectName="Mafia-Gangs" targetName="Button" />
+      <config projectName="Mafia-Gangs" targetName="GameManager" />
+      <config projectName="Mafia-Gangs" targetName="Game" />
+      <config projectName="Mafia-Gangs" targetName="MissionBase" />
+      <config projectName="Mafia-Gangs" targetName="MissionOne" />
+      <config projectName="Mafia-Gangs" targetName="Text" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Mafia Gangs" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Visual Studio" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot;" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72f729d6-d02f-4506-b537-8b1d8d02bd59" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Mafia Gangs" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="3.3" />
+  </component>
+  <component name="ProjectId" id="2NLlhcbgZcoU1huIpcvQeyUiXRk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="CMake Application.MafiaGangs">
+    <configuration name="Audio" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Audio" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Bullet" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Button" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Button" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CollisionMap" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="CollisionMap" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Dialog" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Dialog" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Enemy" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Enemy" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FRect" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="FRect" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Game" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Game" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameManager" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="GameManager" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameMode" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="GameMode" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Gun" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Gun" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HUD" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="HUD" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Loading" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Loading" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MafiaGangs" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="MafiaGangs" CONFIG_NAME="Mafia Gangs" RUN_TARGET_PROJECT_NAME="Mafia-Gangs" RUN_TARGET_NAME="MafiaGangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Menu" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Menu" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MissionBase" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="MissionBase" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MissionManager" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="MissionManager" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MissionOne" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="MissionOne" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Rect" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Rect" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScreenVisibility" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="ScreenVisibility" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Settings" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Settings" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Text" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Text" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Window" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Mafia-Gangs" TARGET_NAME="Window" CONFIG_NAME="Mafia Gangs">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Audio" />
+      <item itemvalue="CMake Application.Bullet" />
+      <item itemvalue="CMake Application.Button" />
+      <item itemvalue="CMake Application.CollisionMap" />
+      <item itemvalue="CMake Application.Dialog" />
+      <item itemvalue="CMake Application.Enemy" />
+      <item itemvalue="CMake Application.FRect" />
+      <item itemvalue="CMake Application.Game" />
+      <item itemvalue="CMake Application.GameManager" />
+      <item itemvalue="CMake Application.GameMode" />
+      <item itemvalue="CMake Application.Gun" />
+      <item itemvalue="CMake Application.HUD" />
+      <item itemvalue="CMake Application.Loading" />
+      <item itemvalue="CMake Application.MafiaGangs" />
+      <item itemvalue="CMake Application.Menu" />
+      <item itemvalue="CMake Application.MissionBase" />
+      <item itemvalue="CMake Application.MissionManager" />
+      <item itemvalue="CMake Application.MissionOne" />
+      <item itemvalue="CMake Application.Rect" />
+      <item itemvalue="CMake Application.ScreenVisibility" />
+      <item itemvalue="CMake Application.Settings" />
+      <item itemvalue="CMake Application.Text" />
+      <item itemvalue="CMake Application.Window" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72f729d6-d02f-4506-b537-8b1d8d02bd59" name="Changes" comment="" />
+      <created>1679451365388</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679451365388</updated>
+      <workItem from="1679451366670" duration="2600000" />
+      <workItem from="1679454690207" duration="977000" />
+      <workItem from="1679457892856" duration="927000" />
+      <workItem from="1679465298388" duration="305000" />
+      <workItem from="1679496738713" duration="1930000" />
+      <workItem from="1679503104614" duration="1236000" />
+      <workItem from="1679504825131" duration="2743000" />
+      <workItem from="1679536668676" duration="293000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/Rect.cpp</url>
+          <line>91</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

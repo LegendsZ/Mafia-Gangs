@@ -1,2 +1,149 @@
-﻿  MissionOne.cpp
+﻿  Bullet.cpp
+  Button.cpp
+  CollisionMap.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\CollisionMap.cpp(29,8): warning C4101: 'a': unreferenced local variable
+  Dialog.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Dialog.cpp(31,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Dialog.cpp(31,46): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Dialog.cpp(31,103): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Dialog.cpp(31,135): warning C4018: '<=': signed/unsigned mismatch
+  Enemy.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(8,3): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(8,9): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(10,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(10,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(10,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(10,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(18,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(18,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(24,71): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(24,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(24,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Enemy.cpp(24,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  FRect.cpp
+  Game.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(22,27): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(50,78): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(51,78): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(108,215): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(108,185): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(127,213): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(127,181): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(215,121): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(217,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(219,24): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(221,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(224,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(225,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(228,110): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(230,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(232,24): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(234,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(237,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(238,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(241,121): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(243,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(245,24): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(247,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(250,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(251,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(254,110): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(256,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(258,24): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(260,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(263,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Game.cpp(264,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  GameManager.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameManager.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  GameMode.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(30,128): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(30,97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(30,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(30,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(36,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(35,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(34,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(34,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(41,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(40,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(39,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(39,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(46,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(45,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(44,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(44,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(55,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(55,51): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(55,118): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(55,155): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(73,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(73,51): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(73,118): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(73,155): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(94,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(94,48): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(94,109): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(94,143): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(117,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\GameMode.cpp(118,27): warning C4018: '<=': signed/unsigned mismatch
+  Gun.cpp
+  HUD.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\HUD.cpp(88,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\HUD.cpp(93,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Loading.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Loading.cpp(51,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Loading.cpp(52,27): warning C4018: '<=': signed/unsigned mismatch
+  Menu.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(29,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(29,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(29,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(29,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(34,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(33,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(32,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(32,7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(39,6): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(38,6): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(37,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(37,6): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(44,6): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(43,6): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(42,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(42,6): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(83,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(84,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(102,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(102,48): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(102,109): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(102,143): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(123,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(123,52): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(123,121): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(123,159): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(131,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(131,48): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(131,109): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Menu.cpp(131,143): warning C4018: '<=': signed/unsigned mismatch
+  MissionBase.cpp
+  MissionManager.cpp
+  MissionOne.cpp
+  Rect.cpp
+  Settings.cpp
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(38,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(38,48): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(38,109): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(38,143): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(49,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(49,54): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(49,127): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(49,167): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(67,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\Settings.cpp(68,27): warning C4018: '<=': signed/unsigned mismatch
+  Source.cpp
+  Text.cpp
+  Generating Code...
+C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\Mafia Gangs\CollisionMap.cpp(124): warning C4715: 'CollisionMap::makeMap': not all control paths return a value
+  Compiling...
+  Window.cpp
+  Generating Code...
   Mafia Gangs.vcxproj -> C:\Users\WINDOWS\Documents\GitHub\Mafia-Gangs\Mafia Gangs\x64\Debug\Mafia Gangs.exe
